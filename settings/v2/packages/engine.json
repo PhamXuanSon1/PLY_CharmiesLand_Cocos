@@ -156,13 +156,13 @@
             "_option": "spine-4.2"
           },
           "spine-3.8": {
-            "_value": true,
+            "_value": false,
             "_flags": {
               "LOAD_SPINE_MANUALLY": false
             }
           },
           "spine-4.2": {
-            "_value": false,
+            "_value": true,
             "_flags": {
               "LOAD_SPINE_MANUALLY": false
             }

@@ -17,7 +17,7 @@ import { TurnOnSpine } from '../utils/TurnOnSpine';
 import { ChangeLight } from '../utils/ChangeLight';
 import { Ply_Pool, PoolType as PlyPoolType } from '../ScriptTemplate/Ply_Pool';
 import { ObjectPool, PoolType } from '../core/ObjectPool';
-import { BlinkEffect } from '../effects/BlinkEffect';
+import { SmokeEffect } from '../effects/SmokeEffect';
 import { TweenUtil } from '../core/TweenUtil';
 import { Ply_SoundManager, FxType } from '../ScriptTemplate/Ply_SoundManager';
 
@@ -298,6 +298,8 @@ export class ItemController extends Component implements IPointerHandler {
         const target = this.targetPoint;
         if (!target || !target.isValid || this.isPlaced) return;
         if (this.persistentShadow) return;
+        // Item còn nằm trên slot và thanh bar đang bật "bóng hiện sẵn" -> giữ bóng sau khi thả hụt
+        if (this.currentHolderSlot && ItemBarManager.instance?.showShadowInSlot) return;
 
         // trả sprite về màu gốc trước rồi mới ẩn node, để lần sau bật lại sạch sẽ
         this.itemGraphic.restoreTargetSprites();
@@ -522,7 +524,7 @@ export class ItemController extends Component implements IPointerHandler {
         return typeof fxType === 'number' ? fxType : null;
     }
 
-    /** Spawn hiệu ứng lấp lánh khi đặt đúng vào target */
+    /** Spawn hiệu ứng khói (SmokeEffect) khi đặt đúng vào target */
     private spawnBlinkEffect(target: Node): void {
         let fxNode: Node | null = null;
 
@@ -534,21 +536,17 @@ export class ItemController extends Component implements IPointerHandler {
             fxNode = ObjectPool.instance.spawn(PoolType.BlinkFX, target.worldPosition);
         }
 
-        if (!fxNode) return;
+        if (!fxNode || !fxNode.isValid) return;
 
-        // 2. Cho nó là con của targetNode và đặt tại tâm
+        // 2. Cho nó là con của target, đặt tại tâm, vẽ trên cùng
         fxNode.setParent(target, false);
         fxNode.setPosition(Vec3.ZERO);
+        fxNode.layer = target.layer;
+        fxNode.setSiblingIndex(target.children.length - 1);
         fxNode.active = true;
 
-        // 3. Reset ParticleSystem2D để kích hoạt phát hạt
-        const ps = fxNode.getComponentInChildren(ParticleSystem2D);
-        if (ps) {
-            ps.resetSystem();
-        }
-
-        // 4. Bật deSpawnByTime tự thu hồi về pool sau thời gian định sẵn (2s)
-        const blink = fxNode.getComponent(BlinkEffect) ?? fxNode.addComponent(BlinkEffect);
-        blink.deSpawnByTime(2);
+        // 3. SmokeEffect: reset mọi ParticleSystem2D và tự trả về pool khi xong
+        const fx = fxNode.getComponent(SmokeEffect) ?? fxNode.addComponent(SmokeEffect);
+        fx.play();
     }
 }

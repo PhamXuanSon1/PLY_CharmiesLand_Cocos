@@ -48,6 +48,9 @@ export class ItemBarManager extends Component {
     @property({ type: Node, tooltip: 'Node con của Tweezers — item được gắn làm con của node này khi kéo (đầu kẹp).' })
     dragPosition: Node | null = null;
 
+    @property({ tooltip: 'Hiện bóng (shadow) ở target NGAY khi item xuất hiện trên slot, không cần kéo.' })
+    showShadowInSlot = true;
+
     @property({ type: Enum(RefillMode), tooltip: 'Batch: hết cả thanh mới bung đợt mới. Immediate: ghép 1 bù 1.' })
     refillMode: RefillMode = RefillMode.Batch;
 
@@ -173,6 +176,9 @@ export class ItemBarManager extends Component {
         // 1. Gán vào holder trước: reparent, dựng sticker (đo bounds ở scale thật), bobbing
         if (item) item.currentHolderSlot = slot;
         slot.setItem(node);
+
+        // Bóng ở target hiện ngay khi item lên slot (không đợi kéo)
+        if (this.showShadowInSlot && item) item.showTargetShadow();
 
         // 2. Rồi mới chạy anim scale 0 -> x1.2 -> x1 (sticker là con của item nên scale theo)
         const over = new Vec3(listScale.x * this.popOvershoot, listScale.y * this.popOvershoot, listScale.z);
