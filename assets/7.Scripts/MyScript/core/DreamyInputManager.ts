@@ -2,7 +2,7 @@
  * InputManager — gom toàn bộ input về một chỗ.
  *
  * Bên Unity, 5 script cùng poll Input mỗi frame (ItemController — MỖI item!,
- * BoxController, WorldScrollManager, BaseRoom, UIManager) và thứ tự ưu tiên
+ * BaseRoom, UIManager) và thứ tự ưu tiên
  * do Unity quyết định ngẫu nhiên. Port 1-1 sang Cocos sẽ vỡ.
  *
  * Ở đây: đăng ký input MỘT LẦN, rồi dispatch theo chuỗi ưu tiên tường minh.
@@ -26,7 +26,6 @@ const Ed: any = (globalThis as any).Editor;
 export enum InputPriority {
     UI = 0,        // CTA / overlay end-game — nuốt sự kiện
     Item = 10,     // kéo item
-    Box = 20,      // click hộp
     Scroll = 30,   // cuộn thanh bar
     Room = 40,     // pan/zoom căn phòng
 }

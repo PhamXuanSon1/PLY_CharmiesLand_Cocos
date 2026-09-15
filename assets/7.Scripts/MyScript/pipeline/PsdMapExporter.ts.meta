@@ -1,0 +1,12 @@
+{
+  "ver": "4.0.24",
+  "importer": "typescript",
+  "imported": true,
+  "uuid": "0f785116-532c-49ab-9b4f-e3e63fcff9ed",
+  "files": [],
+  "subMetas": {},
+  "userData": {
+    "moduleId": "project:///assets/7.Scripts/MyScript/pipeline/PsdMapExporter.ts",
+    "simulateGlobals": []
+  }
+}

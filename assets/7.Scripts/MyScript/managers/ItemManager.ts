@@ -10,9 +10,7 @@
  *     từ ItemManager xuống lúc onLoad.
  *   - ensureHolders(): SceneBuilder dựng scene từ JSON nên holderItemList có thể
  *     rỗng/null, phải tự dò HolderSlot trong scene.
- *   - WorldScrollManager.setupItems(): bên Unity item nằm sẵn đúng vị trí trong
- *     scene, bên Cocos thanh bar do WorldScrollManager xếp. Không ai khác gọi
- *     hàm này nên phải gọi ở đây.
+ *   - Thanh item: ItemBarManager (N slot cố định, bung theo đợt) — thay Box + WorldScrollManager.
  *   - onAnyPointerDown(): thay cho việc poll Input trong Update bên Unity.
  *   - Bỏ layerTop: Cocos render theo thứ tự cây, item được đẩy lên trên bằng
  *     ItemGraphic.bringToFront() (reparent sang DragLayer do DreamyInputManager
@@ -28,9 +26,7 @@ import { ItemGraphic } from '../item/ItemGraphic';
 import { HolderSlot } from '../utils/HolderSlot';
 import { SeatHandler } from '../utils/SeatHandler';
 import { TweenUtil } from '../core/TweenUtil';
-import { WorldScrollManager } from './WorldScrollManager';
 import { UIManager } from './UIManager';
-import { BoxManager } from './BoxManager';
 
 const { ccclass, property } = _decorator;
 
@@ -124,6 +120,13 @@ export class ItemManager extends Component {
     @property({ tooltip: 'Màu của đích khi phục hồi (màu bình thường).' })
     targetNormalColor: Color = new Color(255, 255, 255, 255);
 
+    // ---------------- True/False icon ----------------
+    @property({ type: Node, tooltip: 'Node cha (trong Canvas) để spawn TrueIcon/FalseIcon. Trống = cha của ItemBar.' })
+    iconParent: Node | null = null;
+
+    @property({ tooltip: 'Thời gian icon True/False tồn tại trước khi trả về pool (giây).' })
+    iconLifetime = 1;
+
     // ---------------- UI & Tutorial ----------------
     @property({ type: Node, tooltip: 'Bàn tay hướng dẫn xuất hiện ở đầu game.' })
     handIntro: Node | null = null;
@@ -159,11 +162,7 @@ export class ItemManager extends Component {
         // đủ shadowItemCount item có bóng ghép xong (ItemController.onPointerDown).
         this.initTargetShadows();
 
-        // glue Cocos: xếp item vào thanh bar (Unity không có WorldScrollManager)
-        this.scheduleOnce(() => {
-            const scroll = WorldScrollManager.instance;
-            if (scroll && this.itemList.length > 0) scroll.setupItems(this.itemList);
-        }, 0.1);
+        // glue Cocos: ItemBarManager tự lấy item qua getCurrentItem() và đổ vào slot theo đợt.
     }
 
     onDestroy() {
@@ -261,12 +260,6 @@ export class ItemManager extends Component {
                 this.triggerStuckHint();
             }
         }
-
-        // Đổi state của box nếu list = 0
-        const isListEmpty = this.spawnFromLast
-            ? (this.currentItemIndex < 0)
-            : (this.currentItemIndex >= this.itemList.length);
-        if (isListEmpty) BoxManager.instance?.handleEmptyItems();
     }
 
     // ======================================================== item / holder
@@ -513,7 +506,7 @@ export class ItemManager extends Component {
             if (this.canUseItemHint(item)) return item;
         }
 
-        // glue Cocos: mode spawn tất cả ra vùng (BoxController.spawnAllOnFirstClick) không dùng
+        // glue Cocos: khi không có item nào nằm trong
         // holder -> lấy item đang nằm TRÊN CÙNG (render sau cùng) để người chơi kéo được ngay.
         return this.getTopmostAvailableItem();
     }

@@ -1,0 +1,102 @@
+{
+"skeleton": {
+	"hash": "IIdswda9MnM",
+	"spine": "4.2.38",
+	"x": -79,
+	"y": -124,
+	"width": 158,
+	"height": 248,
+	"images": "./images/",
+	"audio": "./audio"
+},
+"bones": [
+	{ "name": "root" },
+	{ "name": "31", "parent": "root", "color": "b40000ff", "icon": "arrows" },
+	{ "name": "Layer 1", "parent": "31", "x": -58.75, "y": -1.35, "color": "b40000ff", "icon": "square" }
+],
+"slots": [
+	{ "name": "31", "bone": "31", "attachment": "31" },
+	{ "name": "m", "bone": "31", "attachment": "m" },
+	{ "name": "Layer 1", "bone": "Layer 1", "attachment": "Layer 1" },
+	{ "name": "Layer 2", "bone": "31", "attachment": "Layer 1", "blend": "additive" }
+],
+"skins": [
+	{
+		"name": "default",
+		"attachments": {
+			"31": {
+				"31": { "width": 158, "height": 248 }
+			},
+			"Layer 1": {
+				"Layer 1": {
+					"type": "mesh",
+					"uvs": [ 1, 0.31269, 1, 1, 0, 1, 0, 0.31269, 0, 0, 1, 0 ],
+					"triangles": [ 3, 4, 5, 3, 5, 0, 2, 3, 0, 1, 2, 0 ],
+					"vertices": [ 7.5, 18.36, 7.5, -49, -7.5, -49, -7.5, 18.36, -7.5, 49, 7.5, 49 ],
+					"hull": 6,
+					"edges": [ 2, 4, 8, 10, 4, 6, 6, 8, 2, 0, 0, 10 ],
+					"width": 15,
+					"height": 98
+				}
+			},
+			"Layer 2": {
+				"Layer 1": { "x": 5, "y": -25.85, "scaleX": 11.5127, "rotation": -6.75, "width": 15, "height": 98 }
+			},
+			"m": {
+				"m": {
+					"type": "clipping",
+					"end": "m",
+					"vertexCount": 17,
+					"vertices": [ -65.64, 30.28, -41.72, 19.48, -42.36, 9.19, -38.25, 1.86, -29.37, -1.35, -21.79, 0.19, -18.32, 1.09, -16.39, 8.16, 16.66, -7.14, 26.43, -4.44, 60.12, 12.28, 60.5, -50.68, 17.42, -71.51, 12.92, -70.61, -63.85, -35.63, -63.59, 22.13, -66.16, 24.44 ],
+					"color": "ce3a3aff"
+				}
+			}
+		}
+	}
+],
+"animations": {
+	"animation": {
+		"slots": {
+			"Layer 2": {
+				"rgba": [
+					{ "color": "ffffff00" },
+					{ "time": 1.3333, "color": "ffffff56" },
+					{ "time": 2.6667, "color": "ffffff00" },
+					{ "time": 4, "color": "ffffff56" },
+					{ "time": 5.3333, "color": "ffffff00" }
+				]
+			}
+		},
+		"bones": {
+			"Layer 1": {
+				"rotate": [
+					{ "value": -44.84 }
+				],
+				"translate": [
+					{ "x": -24.54, "y": 36.44 },
+					{ "time": 0.5, "x": 67.52, "y": -100.26 }
+				]
+			}
+		},
+		"attachments": {
+			"default": {
+				"Layer 1": {
+					"Layer 1": {
+						"deform": [
+							{},
+							{
+								"time": 0.2667,
+								"vertices": [ 11.01761, 39.75342, 0, 0, 0, 0, 11.82625, 42.15752, 69.56561, 60.99033, 69.56561, 60.99033 ]
+							},
+							{
+								"time": 0.5,
+								"vertices": [ -6.75153, -4.79332, 0, 0, 0, 0, -8.79634, 9.80996, 46.33118, -45.94429, 42.12599, -58.44526 ]
+							}
+						]
+					}
+				}
+			}
+		}
+	}
+}
+}

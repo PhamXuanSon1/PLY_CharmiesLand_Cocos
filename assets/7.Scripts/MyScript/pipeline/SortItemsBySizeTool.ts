@@ -131,7 +131,7 @@ export class SortItemsBySizeTool extends Component {
         for (const col of node.getComponentsInChildren(Collider2D)) {
             const r = this.colliderRect(col);
             if (!r) continue;
-            box = box ? box.union(box, r) : r;
+            if (box) Rect.union(box, box, r); else box = r.clone();
         }
 
         // Không có collider -> đo bằng UITransform
@@ -141,7 +141,7 @@ export class SortItemsBySizeTool extends Component {
                 if (size.width <= 0 && size.height <= 0) continue;
                 const r = new Rect(-size.width * ut.anchorX, -size.height * ut.anchorY,
                                    size.width, size.height);
-                box = box ? box.union(box, r) : r;
+                if (box) Rect.union(box, box, r); else box = r.clone();
             }
         }
 

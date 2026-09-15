@@ -45,6 +45,8 @@ interface SpineJson { skeletonData: string | null; defaultAnim: string | null; s
 interface ComponentJson { type: string; fields: Record<string, unknown>; }
 interface NodeJson {
     path: string; parentPath: string | null; active: boolean;
+    /** Tên node muốn đặt (psd2map.py --names bake sẵn); nếu thiếu thì lấy từ nameMap / đuôi path. */
+    name?: string;
     pos: [number, number, number];
     rot: [number, number, number];
     scale: [number, number, number];
@@ -79,9 +81,25 @@ export class SceneBuilder extends Component {
     @property({ tooltip: 'Thư mục chứa sprite nếu không kéo folder (vd: 3.Sprites/Sprites2 hoặc art/PLY29_Level34/sprites)' })
     spriteDir = '3.Sprites/Sprites2';
 
+    @property({
+        type: JsonAsset,
+        tooltip: 'JSON đổi tên node khi dựng: { "<path trong JSON>" | "<key sprite>": "<tên mới>" }. '
+            + 'Layer PSD đặt tên số (1, 2, 3...) sẽ được đổi thành tên có nghĩa. Trùng tên cùng cha -> thêm _2, _3.',
+    })
+    nameMap: JsonAsset | null = null;
+
 
     @property({ tooltip: 'Sắp xếp siblingIndex theo sortingOrder của Unity' })
     applySorting = true;
+
+    @property({
+        tooltip: 'Bật: node gốc chỉ giữ UITransform + script, ảnh nằm ở node con "<tên>Image" '
+            + '(vd rug_blue -> rug_blue/rug_blueImage). Tắt: Sprite gắn thẳng lên node gốc.',
+    })
+    spriteInChild = true;
+
+    @property({ tooltip: 'Hậu tố tên node con chứa ảnh khi bật Sprite In Child.' })
+    imageSuffix = 'Image';
 
     @property({ tooltip: 'In cảnh báo chi tiết ra console' })
     verbose = true;
@@ -278,17 +296,15 @@ export class SceneBuilder extends Component {
 
     // ------------------------------------------------------------ pass 1
     private createNode(n: NodeJson): void {
-        const name = n.path.substring(n.path.lastIndexOf('/') + 1);
-        const node = new Node(name);
+        const parent = (n.parentPath ? this.nodeMap.get(n.parentPath) : this.node) ?? this.node;
+        const node = new Node(this.resolveName(n, parent));
 
         // ⚠ BẮT BUỘC: new Node() cho ra layer DEFAULT, mà pipeline UI của Cocos
         //   chỉ vẽ node UI_2D -> sprite dựng bằng code sẽ KHÔNG hiện, dù Scene view
         //   vẫn thấy đủ và camera vẫn ghi nhận draw call.
         //   Kế thừa layer của node gắn SceneBuilder (nằm dưới Canvas -> UI_2D).
         node.layer = this.node.layer;
-
-        const parent = n.parentPath ? this.nodeMap.get(n.parentPath) : this.node;
-        node.setParent(parent ?? this.node);
+        node.setParent(parent);
 
         node.setPosition(n.pos[0], n.pos[1], n.pos[2]);
         node.setRotationFromEuler(n.rot[0], n.rot[1], n.rot[2]);
@@ -300,16 +316,51 @@ export class SceneBuilder extends Component {
         this.nodeMap.set(n.path, node);
     }
 
-    private setupSprite(node: Node, s: SpriteJson): void {
-        const ut = node.addComponent(UITransform);
+    /**
+     * Tên node: n.name (bake trong JSON) > nameMap[path] > nameMap[sprite.key] > đuôi path.
+     * Cùng cha mà trùng tên thì nối _2, _3... để AutoAssignByNameTool tra được.
+     */
+    private resolveName(n: NodeJson, parent: Node): string {
+        const map = (this.nameMap?.json ?? {}) as Record<string, unknown>;
+        const pick = (v: unknown) => (typeof v === 'string' && v.trim()) ? v.trim() : '';
+        let name = pick(n.name)
+            || pick(map[n.path])
+            || (n.sprite ? pick(map[n.sprite.key]) : '')
+            || n.path.substring(n.path.lastIndexOf('/') + 1);
 
+        const taken = new Set(parent.children.map((c) => c.name));
+        if (taken.has(name)) {
+            let i = 2;
+            while (taken.has(`${name}_${i}`)) i++;
+            name = `${name}_${i}`;
+        }
+        return name;
+    }
+
+    private setupSprite(node: Node, s: SpriteJson): void {
         // ⚠ Hệ số PPU nằm ở contentSize, KHÔNG nằm ở node.scale —
         //   để node con không bị nhân theo hệ số của node cha.
         const f = this.buildK / s.ppu;
-        ut.setContentSize(new Size(s.nativeSize[0] * f, s.nativeSize[1] * f));
+        const size = new Size(s.nativeSize[0] * f, s.nativeSize[1] * f);
+
+        // Node gốc luôn có UITransform (BoxCollider2D của ItemController lấy size từ đây,
+        // ItemGraphic.getCombinedBounds gộp bounds theo UITransform).
+        const ut = node.addComponent(UITransform);
+        ut.setContentSize(size);
         ut.setAnchorPoint(s.pivot[0], s.pivot[1]);
 
-        const sprite = node.addComponent(Sprite);
+        // Ảnh: gắn lên node con "<tên>Image" (mặc định) hoặc thẳng lên node gốc.
+        let host = node;
+        if (this.spriteInChild) {
+            host = new Node(`${node.name}${this.imageSuffix}`);
+            host.layer = node.layer;
+            host.setParent(node);
+            const hut = host.addComponent(UITransform);
+            hut.setContentSize(size);
+            hut.setAnchorPoint(s.pivot[0], s.pivot[1]);
+        }
+
+        const sprite = host.addComponent(Sprite);
         sprite.sizeMode = Sprite.SizeMode.CUSTOM;
         sprite.trim = false;
 

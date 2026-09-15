@@ -60,6 +60,29 @@ export class ItemGraphic extends Component {
         this.node.setParent(layer, true);             // giữ nguyên world transform
     }
 
+    /**
+     * glue Cocos: gắn item làm con của `holder` (vd Tweezers/DragPosition) tại local (0,0),
+     * nhớ (parent, siblingIndex) cũ để restoreOriginalLayers trả về được.
+     */
+    attachTo(holder: Node): void {
+        if (!this.savedParent) {
+            this.savedParent = this.node.parent;
+            this.savedIndex = this.node.getSiblingIndex();
+        }
+        this.node.setParent(holder, false);
+        this.node.setPosition(0, 0, 0);
+    }
+
+    /**
+     * glue Cocos: đang nằm trong holder tạm (nhíp) -> chuyển sang lớp kéo, GIỮ world transform
+     * và giữ nguyên (parent, index) đã lưu, để phần bay về / bay vào target chạy như cũ.
+     */
+    liftToDragLayer(): void {
+        const layer = this.resolveDragLayer();
+        if (!layer) return;
+        this.node.setParent(layer, true);
+    }
+
     /** Unity: RestoreOriginalLayers — trả item về đúng chỗ cũ trong cây. */
     restoreOriginalLayers(): void {
         if (!this.savedParent || !this.savedParent.isValid) {
@@ -147,10 +170,19 @@ export class ItemGraphic extends Component {
 
         let box: Rect | null = null;
         for (const ut of uts) {
+            // bỏ qua sticker trắng (HolderSlot) — không phải hình của item
+            if (ItemGraphic.isUnderNamed(ut.node, '__Sticker__')) continue;
             const b = ut.getBoundingBoxToWorld();
             if (b.width <= 0 && b.height <= 0) continue;
-            box = box ? box.union(box, b) : b.clone();
+            // ⚠ Rect.union là hàm static: Rect.union(out, a, b)
+            if (box) Rect.union(box, box, b);
+            else box = b.clone();
         }
         return box;
+    }
+
+    private static isUnderNamed(n: Node, name: string): boolean {
+        for (let p: Node | null = n; p; p = p.parent) if (p.name === name) return true;
+        return false;
     }
 }

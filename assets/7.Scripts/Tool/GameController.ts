@@ -1,4 +1,5 @@
 import { _decorator, assetManager, Component, Font, Node } from "cc";
+import { AppLovinAnalytics } from "./AppLovinAnalytics";
 const { ccclass, property } = _decorator;
 
 // openFullscreen();

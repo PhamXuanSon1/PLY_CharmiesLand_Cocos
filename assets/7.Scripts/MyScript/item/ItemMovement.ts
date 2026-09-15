@@ -87,8 +87,23 @@ export class ItemMovement extends Component {
         this.originalRotation = this.node.eulerAngles.clone();
     }
 
-    /** Unity: StartDragAnimation */
-    startDragAnimation(): void {
+    /**
+     * Scale gốc lúc kéo — glue Cocos: item nằm trong thanh bar (scale 1) còn phòng
+     * được scale (vd 0.5), nên khi kéo phải đưa item về ĐÚNG world scale của target
+     * để khớp với bóng. ItemController tính và truyền vào startDragAnimation.
+     */
+    private dragBaseScale: Vec3 | null = null;
+
+    /** Scale cơ sở khi kéo (đã khớp target) — dùng lại khi bay vào target. */
+    getDragBaseScale(): Vec3 {
+        return (this.dragBaseScale ?? this.originalScale).clone();
+    }
+
+    /**
+     * Unity: StartDragAnimation
+     * @param baseScale scale local để item có world scale = target (null = originalScale)
+     */
+    startDragAnimation(baseScale: Vec3 | null = null): void {
         Tween.stopAllByTarget(this.node);
         this.isScaling = true;
 
@@ -96,14 +111,12 @@ export class ItemMovement extends Component {
         // được click ngay khi vừa bay ra khỏi hộp) — nếu không item sẽ scale về 0.
         if (ItemMovement.isZeroScale(this.originalScale)) this.captureOriginal();
 
-        if (ItemMovement.enableDragScale) {
-            const target = new Vec3(
-                this.originalScale.x * ItemMovement.dragScaleAmount,
-                this.originalScale.y * ItemMovement.dragScaleAmount,
-                this.originalScale.z * ItemMovement.dragScaleAmount,
-            );
-            tween(this.node).to(0.2, { scale: target }, { easing: 'quadOut' }).start();
-        }
+        this.dragBaseScale = baseScale ? baseScale.clone() : null;
+        const base = this.getDragBaseScale();
+        const k = ItemMovement.enableDragScale ? ItemMovement.dragScaleAmount : 1;
+        tween(this.node)
+            .to(0.2, { scale: new Vec3(base.x * k, base.y * k, base.z * k) }, { easing: 'quadOut' })
+            .start();
 
         // trả lại rotation gốc
         tween(this.node).to(0.3, { eulerAngles: this.originalRotation.clone() }, { easing: 'quadOut' }).start();
@@ -122,16 +135,19 @@ export class ItemMovement extends Component {
         this.node.setWorldPosition(worldPos);
     }
 
-    /** Unity: StopDragAnimation */
-    stopDragAnimation(): void {
-        if (ItemMovement.enableDragScale && this.isScaling) {
-            tween(this.node)
-                .to(0.5, { scale: this.originalScale.clone() }, { easing: 'quadOut' })
-                .call(() => { this.isScaling = false; })
-                .start();
-        } else {
-            this.isScaling = false;
-        }
+    /**
+     * Unity: StopDragAnimation
+     * @param restoreOriginal true  = thả hụt: về originalScale (scale lúc ở Holder)
+     *                        false = snap đúng: về dragBaseScale (world scale = target), bỏ bump 1.1
+     */
+    stopDragAnimation(restoreOriginal = true): void {
+        const target = restoreOriginal ? this.originalScale.clone() : this.getDragBaseScale();
+        this.dragBaseScale = null;
+        this.isScaling = false;
+        if (this.node.scale.equals(target)) return;
+        tween(this.node)
+            .to(restoreOriginal ? 0.3 : 0.2, { scale: target }, { easing: 'quadOut' })
+            .start();
     }
 
     /** Unity: SnapFailedAnimation — xoay lệch ngẫu nhiên khi thả hụt. */

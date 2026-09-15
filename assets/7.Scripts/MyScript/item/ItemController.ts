@@ -3,14 +3,14 @@
  * Sử dụng hệ thống âm thanh từ PLY_SoundManager (sm).
  */
 
-import { _decorator, BoxCollider2D, Collider2D, Component, Enum, EventTouch, Node, ParticleSystem2D, Tween, tween, UITransform, Vec2, Vec3 } from 'cc';
+import { _decorator, Animation, BoxCollider2D, Collider2D, Component, Enum, EventTouch, Node, ParticleSystem2D, Tween, tween, UITransform, Vec2, Vec3 } from 'cc';
 import { DreamyInputManager, InputPriority, IPointerHandler } from '../core/DreamyInputManager';
 import { ItemGraphic } from './ItemGraphic';
 import { ItemMovement } from './ItemMovement';
 import { OpenItem } from './OpenItem';
 import { ItemManager } from '../managers/ItemManager';
 import { UIManager } from '../managers/UIManager';
-import { WorldScrollManager } from '../managers/WorldScrollManager';
+import { ItemBarManager } from '../managers/ItemBarManager';
 import { SeatHandler } from '../utils/SeatHandler';
 import { HolderSlot } from '../utils/HolderSlot';
 import { TurnOnSpine } from '../utils/TurnOnSpine';
@@ -104,6 +104,8 @@ export class ItemController extends Component implements IPointerHandler {
     readonly inputPriority = InputPriority.Item;
 
     private dragging = false;
+    /** Lần kéo này dùng nhíp (item là con của ItemBar.Tweezers/DragPosition). */
+    private usingTweezers = false;
     private moving = false;
     private itemCollider: Collider2D | null = null;
     private initialWorldPos = new Vec3();
@@ -145,7 +147,7 @@ export class ItemController extends Component implements IPointerHandler {
     }
 
     /** Bắt đầu nhấc item lên (Pick) */
-    onPointerDown(_worldPos: Vec3, _ev: EventTouch): boolean {
+    onPointerDown(worldPos: Vec3, _ev: EventTouch): boolean {
         if (UIManager.instance?.isGameEnded) return false;
         if (this.isPlaced || this.moving) return false;
 
@@ -158,10 +160,19 @@ export class ItemController extends Component implements IPointerHandler {
         // 1. Phát âm thanh Pick từ Ply_SoundManager
         Ply_SoundManager.Ins?.playFx(FxType.PickItem);
 
-        // 2. Animation & đưa lên lớp kéo trên cùng
-        this.itemMovement.startDragAnimation();
+        // 2. Nhấc item: có nhíp -> bật nhíp tại con trỏ, item làm con của DragPosition và kéo NHÍP;
+        //    không có -> đưa item lên lớp kéo như cũ. Sau đó scale item về ĐÚNG world scale
+        //    của target (thanh bar scale 1, phòng scale 0.5 -> nếu không item to gấp đôi bóng).
         this.dragging = true;
-        this.itemGraphic.bringToFront();
+        const bar = ItemBarManager.instance;
+        this.usingTweezers = !!bar?.hasTweezers;
+        if (this.usingTweezers) {
+            bar!.showTweezers(worldPos);
+            this.itemGraphic.attachTo(bar!.dragPosition!);
+        } else {
+            this.itemGraphic.bringToFront();
+        }
+        this.itemMovement.startDragAnimation(this.computeDragBaseScale());
 
         // 3. Hiện bóng (shadow) ở vị trí đích — chỉ hiện khi đang kéo item này, và chỉ
         //    khi chưa dùng hết shadowItemCount lượt (ItemManager.canShowDragShadow)
@@ -191,8 +202,9 @@ export class ItemController extends Component implements IPointerHandler {
             im.resetIdleTimer();
         }
 
+        // Nhấc khỏi slot: dừng nhấp nhô + tắt sticker trắng dưới item
         this.currentHolderSlot?.stopBobbingAnimation();
-        WorldScrollManager.instance?.itemPickedUp(this);
+        this.currentHolderSlot?.setStickerVisible(false);
 
         return true;
     }
@@ -200,14 +212,22 @@ export class ItemController extends Component implements IPointerHandler {
     /** Di chuyển theo ngón tay / chuột */
     onPointerMove(worldPos: Vec3, _ev: EventTouch): void {
         if (!this.dragging) return;
-        this.itemMovement.moveToPosition(worldPos);
+        if (this.usingTweezers) ItemBarManager.instance?.moveTweezers(worldPos);   // kéo nhíp, item đi theo
+        else this.itemMovement.moveToPosition(worldPos);
+    }
+
+    /** Thả tay khi đang dùng nhíp: chuyển item sang lớp kéo (giữ world) rồi tắt nhíp. */
+    private releaseTweezers(): void {
+        if (!this.usingTweezers) return;
+        this.usingTweezers = false;
+        this.itemGraphic.liftToDragLayer();
+        ItemBarManager.instance?.hideTweezers();
     }
 
     /** Thả tay (Pointer Up) */
     onPointerUp(_worldPos: Vec3, _ev: EventTouch): void {
         if (!this.dragging) return;
         this.dragging = false;
-        this.itemMovement.stopDragAnimation();
 
         const im = ItemManager.instance;
         if (im) {
@@ -215,13 +235,45 @@ export class ItemController extends Component implements IPointerHandler {
             im.resetIdleTimer();
         }
 
-        this.checkSnap();
+        // Snap đúng: giữ scale khớp target (bỏ bump 1.1), NHÍP KẸP item bay tới target,
+        //   tới nơi mới đổi cha item vào phòng (xem moveToTarget). Thả hụt: nhả nhíp ngay, về Holder.
+        const snapped = this.canSnap();
+        this.itemMovement.stopDragAnimation(!snapped);
+        if (snapped) {
+            this.moveToTarget();
+        } else {
+            // Thả hụt: FalseIcon ngay tại vị trí thả
+            this.spawnIcon(PlyPoolType.FalseIcon, this.node.worldPosition.clone());
+            this.releaseTweezers();
+            this.snapFailed();
+        }
+    }
+
+    /**
+     * glue Cocos: scale local (trong lớp kéo) để item có world scale = world scale của target.
+     * Giữ dấu (flip) của originalScale.
+     */
+    private computeDragBaseScale(): Vec3 | null {
+        const target = this.targetPoint;
+        const parent = this.node.parent;
+        if (!target || !target.isValid || !parent) return null;
+        const tw = target.worldScale;
+        const pw = parent.worldScale;
+        const safe = (v: number) => (Math.abs(v) < 1e-6 ? 1 : v);
+        const o = this.itemMovement.originalScale;
+        const sign = (v: number) => (v < 0 ? -1 : 1);
+        return new Vec3(
+            Math.abs(tw.x / safe(pw.x)) * sign(o.x),
+            Math.abs(tw.y / safe(pw.y)) * sign(o.y),
+            Math.abs(tw.z / safe(pw.z)) * sign(o.z || 1),
+        );
     }
 
     /** Huỷ thao tác giữa chừng */
     onPointerCancel(): void {
         if (!this.dragging) return;
         this.dragging = false;
+        this.releaseTweezers();
         this.itemMovement.stopDragAnimation();
         if (ItemManager.instance) ItemManager.instance.isDragging = false;
         this.snapFailed();
@@ -253,11 +305,9 @@ export class ItemController extends Component implements IPointerHandler {
 
     // ======================================================== Snap Logic
     /** Kiểm tra xem item có đủ gần đích để ghép không */
-    private checkSnap(): void {
-        if (!this.targetPoint || !this.targetPoint.isValid) {
-            this.snapFailed();
-            return;
-        }
+    /** Item có đủ điều kiện ghép vào target không (vị trí + SeatHandler). */
+    private canSnap(): boolean {
+        if (!this.targetPoint || !this.targetPoint.isValid) return false;
 
         const targetCollider = this.targetPoint.getComponent(Collider2D);
         let isSnapped = false;
@@ -269,23 +319,18 @@ export class ItemController extends Component implements IPointerHandler {
 
         if (!isSnapped) {
             const distance = Vec3.distance(this.node.worldPosition, this.targetPoint.worldPosition);
-            if (distance <= this.snapDistance) {
-                isSnapped = true;
-            }
+            if (distance <= this.snapDistance) isSnapped = true;
         }
 
-        if (isSnapped) {
-            // Kiểm tra điều kiện phụ (SeatHandler nếu có)
-            const seat = this.getComponent(SeatHandler);
-            if (seat && !seat.canPlace()) {
-                console.log('[ItemController] Phải đặt item khác trước!');
-                this.snapFailed();
-                return;
-            }
-            this.moveToTarget();
-        } else {
-            this.snapFailed();
+        if (!isSnapped) return false;
+
+        // Kiểm tra điều kiện phụ (SeatHandler nếu có)
+        const seat = this.getComponent(SeatHandler);
+        if (seat && !seat.canPlace()) {
+            console.log('[ItemController] Phải đặt item khác trước!');
+            return false;
         }
+        return true;
     }
 
     /** Thả trượt: Bay về vị trí ban đầu (Holder / vị trí nhấc lên), không phát âm thanh */
@@ -304,15 +349,22 @@ export class ItemController extends Component implements IPointerHandler {
                 ? this.currentHolderSlot.originPosition.worldPosition.clone()
                 : this.currentHolderSlot.node.worldPosition.clone();
 
+            // ⚠ killAll dừng cả tween scale vừa tạo trong stopDragAnimation -> tween lại sau killAll
             TweenUtil.killAll(this.node);
+
+            // Đổi cha về HolderSlot NGAY (giữ world) rồi mới bay về — item nằm trong slot suốt lúc bay
+            this.itemGraphic.restoreOriginalLayers();
+            if (this.node.parent !== this.currentHolderSlot.node) {
+                this.node.setParent(this.currentHolderSlot.node, true);
+            }
+
+            TweenUtil.scaleTo(this.node, this.itemMovement.originalScale.clone(), this.moveDuration, 'quadOut');
             TweenUtil.moveTo(this.node, returnPos, this.moveDuration, 'quadOut', () => {
-                this.itemGraphic.restoreOriginalLayers();
+                this.node.setScale(this.itemMovement.originalScale);
+                this.currentHolderSlot?.setStickerVisible(true);
                 this.currentHolderSlot?.startBobbingAnimation();
                 ItemManager.instance?.showStuckHintAgain();
             });
-        } else if (WorldScrollManager.instance) {
-            WorldScrollManager.instance.itemReturned(this);
-            ItemManager.instance?.showStuckHintAgain();
         } else {
             // Không có holder / scroll: GIỮ NGUYÊN vị trí vừa thả (không bay về chỗ cũ),
             // trả về layer gốc nhưng đưa lên trên cùng của đống item để không bị che.
@@ -353,6 +405,25 @@ export class ItemController extends Component implements IPointerHandler {
         }
     }
 
+    /** Spawn TrueIcon/FalseIcon từ Ply_Pool tại world pos (trong Canvas), tự trả về pool sau iconLifetime. */
+    private spawnIcon(type: PlyPoolType, worldPos: Vec3): void {
+        const pool = Ply_Pool.Ins;
+        if (!pool) return;
+        const unit = pool.spawn(type, Vec3.ZERO);
+        if (!unit?.node) return;
+
+        const im = ItemManager.instance;
+        const parent = im?.iconParent?.isValid ? im.iconParent : ItemBarManager.instance?.node.parent ?? null;
+        if (parent) {
+            unit.node.setParent(parent, false);
+            unit.node.layer = parent.layer;
+            unit.node.setSiblingIndex(parent.children.length - 1);   // trên cùng
+        }
+        unit.node.setWorldPosition(worldPos);
+        unit.node.getComponent(Animation)?.play();
+        unit.deSpawnByTime(im?.iconLifetime ?? 1);
+    }
+
     /** Ghép đúng: Bay vào Target + bật Target + phát âm thanh Done/LandRight */
     private moveToTarget(): void {
         const target = this.targetPoint!;
@@ -360,9 +431,14 @@ export class ItemController extends Component implements IPointerHandler {
         this.stopIdleBobbing();
         this.idleBobBaseWorldPos = null;
 
-        WorldScrollManager.instance?.itemPlaced(this);
+        const onArrive = () => {
+            // Đang được nhíp kẹp: tới target rồi mới nhả — chuyển item sang lớp kéo (giữ world)
+            // để matchItemSortingOrderToTarget bên dưới đổi cha vào phòng, rồi tắt nhíp.
+            this.releaseTweezers();
 
-        this.itemMovement.moveToTarget(target, this.moveDuration, () => {
+            // Ghép đúng: TrueIcon tại target khi item vừa bay tới
+            this.spawnIcon(PlyPoolType.TrueIcon, target.worldPosition.clone());
+
             // 1. Kích hoạt Target và tất cả các node con của Target
             target.active = true;
             for (const child of target.children) {
@@ -390,11 +466,12 @@ export class ItemController extends Component implements IPointerHandler {
             }
 
 
-            // 4. Giải phóng slot nếu nằm trong thanh bar
+            // 4. Giải phóng slot nếu nằm trong thanh bar, báo thanh bar refill
             if (this.currentHolderSlot) {
                 this.currentHolderSlot.clearSlot();
                 this.currentHolderSlot = null;
             }
+            ItemBarManager.instance?.itemPlaced(this);
 
             this.itemGraphic.restoreOriginalLayers();
             this.itemGraphic.matchItemSortingOrderToTarget(target);
@@ -420,7 +497,21 @@ export class ItemController extends Component implements IPointerHandler {
             ItemManager.instance?.setLastItem(null);
 
             ChangeLight.notifyItemPlaced();
-        });
+        };
+
+        const bar = ItemBarManager.instance;
+        const carrier = this.usingTweezers && bar?.tweezers?.isValid ? bar.tweezers : null;
+        if (carrier) {
+            // Tween NHÍP sao cho item (con của DragPosition) đáp đúng target: giữ offset nhíp - item
+            const off = carrier.worldPosition.clone().subtract(this.node.worldPosition);
+            const dest = target.worldPosition.clone().add(off);
+            tween(carrier)
+                .to(this.moveDuration, { worldPosition: dest }, { easing: 'quadOut' })
+                .call(onArrive)
+                .start();
+        } else {
+            this.itemMovement.moveToTarget(target, this.moveDuration, onArrive);
+        }
     }
 
     private materialTypeToFxType(materialType: MaterialType): FxType | null {

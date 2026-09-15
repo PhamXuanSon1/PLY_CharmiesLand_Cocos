@@ -66,10 +66,10 @@ export class Ply_Pool extends Ply_Singleton {
                 unitNode.active = false;
                 unitNode.setParent(this.node);
 
-                const gameUnit = unitNode.getComponent(Ply_GameUnit);
-                if (gameUnit) {
-                    this.dict.get(poolAmount.type)!.push(gameUnit);
-                }
+                // Prefab khong co san Ply_GameUnit (vd TrueIcon/FalseIcon) -> tu them de pool duoc
+                const gameUnit = unitNode.getComponent(Ply_GameUnit) ?? unitNode.addComponent(Ply_GameUnit);
+                gameUnit.poolType = poolAmount.type;
+                this.dict.get(poolAmount.type)!.push(gameUnit);
             }
         }
     }
@@ -97,6 +97,7 @@ export class Ply_Pool extends Ply_Singleton {
             const unitNode = instantiate(prefab);
             unitNode.setParent(this.node);
             gameUnit = unitNode.getComponent(Ply_GameUnit) ?? unitNode.addComponent(Ply_GameUnit);
+            gameUnit.poolType = poolType;
         }
 
         if (gameUnit && gameUnit.node) {
