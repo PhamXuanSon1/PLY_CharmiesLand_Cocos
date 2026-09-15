@@ -1,0 +1,40 @@
+{
+  "package_version": 2,
+  "name": "audio-converter",
+  "version": "1.0.0",
+  "description": "Convert audio assets between mp3 / ogg / wav / m4a / flac / opus with ffmpeg. Batch convert, resample, downmix to mono, normalise loudness and trim silence.",
+  "author": "PLY",
+  "editor": ">=3.7.0",
+  "main": "./main.js",
+  "panels": {
+    "default": {
+      "title": "Audio Converter",
+      "type": "dockable",
+      "main": "./src/panels/default.js",
+      "size": {
+        "min-width": 560,
+        "min-height": 480,
+        "width": 720,
+        "height": 800
+      }
+    }
+  },
+  "contributions": {
+    "menu": [
+      { "path": "Tool", "label": "Audio Converter", "message": "open-panel" },
+      { "path": "i18n:menu.panel/Audio Converter", "label": "Open Panel", "message": "open-panel" }
+    ],
+    "messages": {
+      "open-panel": { "methods": ["openPanel"] },
+      "collect-selected": { "methods": ["collectSelected"] },
+      "browse-files": { "methods": ["browseFiles"] },
+      "browse-folder": { "methods": ["browseFolder"] },
+      "resolve-inputs": { "methods": ["resolveInputs"] },
+      "analyze": { "methods": ["analyze"] },
+      "run": { "methods": ["run"] },
+      "progress-status": { "methods": ["progressStatus"] },
+      "cancel": { "methods": ["cancel"] },
+      "reveal": { "methods": ["reveal"] }
+    }
+  }
+}

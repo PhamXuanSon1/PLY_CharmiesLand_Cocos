@@ -1,0 +1,174 @@
+<div id="app">
+    <header>
+        <h2>Audio Converter</h2>
+        <span class="hint">Chuyển đổi định dạng file âm thanh bằng ffmpeg: mp3 &harr; ogg &harr; wav &harr; m4a &harr; flac &harr; opus. Chạy hàng loạt, đổi sample rate, gộp về mono, chuẩn hoá âm lượng và cắt khoảng lặng đầu/cuối.</span>
+    </header>
+
+    <section class="form">
+        <h3>1. Files</h3>
+        <ui-drag-area id="drop" class="drop" droppable="cc.AudioClip,cc.Asset">
+            <span class="hint">Kéo file âm thanh hoặc thư mục từ panel Assets thả vào đây, hoặc dùng các nút bên dưới.</span>
+        </ui-drag-area>
+        <div class="row">
+            <ui-button id="addSelected">Add selected in Assets</ui-button>
+            <ui-button id="browse">Browse files...</ui-button>
+            <span class="grow"></span>
+            <ui-button id="clear">Clear list</ui-button>
+        </div>
+        <div id="fileList" class="panel list hidden"></div>
+
+        <h3>2. Output format</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Format"></ui-label>
+            <ui-select slot="content" id="format" class="grow">
+                <option value="mp3">MP3 (libmp3lame)</option>
+                <option value="ogg">OGG Vorbis (libvorbis)</option>
+                <option value="m4a">M4A / AAC</option>
+                <option value="opus">Opus (libopus)</option>
+                <option value="wav">WAV (PCM 16-bit, lossless)</option>
+                <option value="flac">FLAC (lossless)</option>
+            </ui-select>
+        </ui-prop>
+
+        <ui-prop id="rowRateMode">
+            <ui-label slot="label" value="Rate mode"></ui-label>
+            <ui-select slot="content" id="rateMode" class="grow">
+                <option value="cbr">Constant bitrate (CBR)</option>
+                <option value="vbr">Variable bitrate (VBR, nhỏ hơn)</option>
+            </ui-select>
+        </ui-prop>
+
+        <ui-prop id="rowBitrate">
+            <ui-label slot="label" value="Bitrate"></ui-label>
+            <div slot="content" class="row">
+                <ui-num-input id="bitrateKbps" class="grow" min="8" max="512" step="16" value="128"></ui-num-input>
+                <span class="hint">kbps</span>
+                <div class="presets" id="bitratePresets">
+                    <ui-button class="tiny" data-b="64">64</ui-button>
+                    <ui-button class="tiny" data-b="96">96</ui-button>
+                    <ui-button class="tiny" data-b="128">128</ui-button>
+                    <ui-button class="tiny" data-b="192">192</ui-button>
+                </div>
+            </div>
+        </ui-prop>
+
+        <ui-prop id="rowVbr">
+            <ui-label slot="label" value="VBR quality"></ui-label>
+            <div slot="content" class="row">
+                <ui-num-input id="vbrQuality" class="grow" min="0" max="10" step="1" value="4"></ui-num-input>
+                <span class="hint" id="vbrHint">MP3: 0 = tốt nhất, 9 = nhỏ nhất</span>
+            </div>
+        </ui-prop>
+
+        <h3>3. Audio settings</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Sample rate"></ui-label>
+            <ui-select slot="content" id="sampleRate" class="grow">
+                <option value="0">Giữ nguyên</option>
+                <option value="44100">44100 Hz</option>
+                <option value="32000">32000 Hz</option>
+                <option value="22050">22050 Hz</option>
+                <option value="16000">16000 Hz</option>
+            </ui-select>
+        </ui-prop>
+
+        <ui-prop>
+            <ui-label slot="label" value="Channels"></ui-label>
+            <ui-select slot="content" id="channels" class="grow">
+                <option value="0">Giữ nguyên</option>
+                <option value="1">Mono (nhẹ hơn ~50%)</option>
+                <option value="2">Stereo</option>
+            </ui-select>
+        </ui-prop>
+
+        <ui-prop>
+            <ui-label slot="label" value="Normalize"></ui-label>
+            <ui-checkbox slot="content" id="normalize"></ui-checkbox>
+        </ui-prop>
+        <span class="hint indent">Chuẩn hoá âm lượng về -16 LUFS. Chậm hơn vì phải phân tích cả file.</span>
+
+        <ui-prop>
+            <ui-label slot="label" value="Trim silence"></ui-label>
+            <ui-checkbox slot="content" id="trimSilence"></ui-checkbox>
+        </ui-prop>
+        <span class="hint indent">Cắt khoảng lặng ở đầu và cuối. Hữu ích cho SFX cần phát tức thì.</span>
+
+        <h3>4. Output</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Write to"></ui-label>
+            <ui-select slot="content" id="output" class="grow">
+                <option value="sibling">Cạnh file gốc, cùng tên (chỉ đổi đuôi)</option>
+                <option value="suffix">Cạnh file gốc, thêm hậu tố</option>
+                <option value="folder">Thư mục khác</option>
+            </ui-select>
+        </ui-prop>
+
+        <ui-prop id="rowSuffix">
+            <ui-label slot="label" value="Suffix"></ui-label>
+            <ui-input slot="content" id="suffix" class="grow" value="_converted"></ui-input>
+        </ui-prop>
+
+        <ui-prop id="rowFolder">
+            <ui-label slot="label" value="Folder"></ui-label>
+            <div slot="content" class="row">
+                <ui-input id="folder" class="grow" placeholder="db://assets/4.Sounds/converted"></ui-input>
+                <ui-button id="browseFolder">...</ui-button>
+            </div>
+        </ui-prop>
+
+        <ui-prop>
+            <ui-label slot="label" value="Delete source"></ui-label>
+            <ui-checkbox slot="content" id="deleteSource"></ui-checkbox>
+        </ui-prop>
+        <span class="hint indent warn">Xoá file gốc (và .meta của nó) sau khi convert xong. Chỉ bật khi bạn đã hiểu cảnh báo về uuid bên dưới.</span>
+
+        <ui-prop>
+            <ui-label slot="label" value="Overwrite existing"></ui-label>
+            <ui-checkbox slot="content" id="overwriteExisting"></ui-checkbox>
+        </ui-prop>
+
+        <ui-prop>
+            <ui-label slot="label" value="Re-encode same format"></ui-label>
+            <ui-checkbox slot="content" id="reencodeSameFormat"></ui-checkbox>
+        </ui-prop>
+        <span class="hint indent">Cho phép mp3 &rarr; mp3 (để hạ bitrate / đổi sample rate). Mặc định các file đã đúng định dạng sẽ bị bỏ qua.</span>
+
+        <ui-prop>
+            <ui-label slot="label" value="Backup"></ui-label>
+            <ui-checkbox slot="content" id="backup" value="true"></ui-checkbox>
+        </ui-prop>
+        <span class="hint indent">Chép file gốc + .meta vào <code>temp/audio-converter-backup/&lt;timestamp&gt;</code> trước khi chạy.</span>
+
+        <ui-prop>
+            <ui-label slot="label" value="Refresh asset-db"></ui-label>
+            <ui-checkbox slot="content" id="refresh" value="true"></ui-checkbox>
+        </ui-prop>
+
+        <div class="panel warnbox">
+            <b>Lưu ý về uuid:</b> đổi đuôi file nghĩa là Cocos tạo asset MỚI với uuid mới.
+            Mọi chỗ đang gán AudioClip cũ trong scene/prefab sẽ bị mất tham chiếu và bạn phải gán lại tay.
+            Muốn giữ nguyên tham chiếu thì đừng đổi định dạng — chỉ hạ bitrate bằng
+            <i>Re-encode same format</i>.
+        </div>
+
+        <div class="row actions">
+            <ui-button id="preview">Preview</ui-button>
+            <ui-button id="convert" class="green">Convert</ui-button>
+            <ui-button id="cancelBtn" disabled>Cancel</ui-button>
+            <span class="grow"></span>
+            <ui-button id="revealBackup" class="hidden">Mở thư mục backup</ui-button>
+        </div>
+
+        <div id="progressWrap" class="hidden">
+            <ui-progress id="progress" value="0"></ui-progress>
+            <span class="hint" id="progressText"></span>
+        </div>
+
+        <div id="issues" class="panel issues hidden"></div>
+        <div id="result" class="panel hidden"></div>
+        <div id="logWrap" class="hidden">
+            <h3>Log</h3>
+            <pre id="log" class="panel log"></pre>
+        </div>
+    </section>
+</div>

@@ -1,5 +1,6 @@
 import { _decorator, assetManager, Component, Font, Node } from "cc";
 import { AppLovinAnalytics } from "./AppLovinAnalytics";
+import { ProgressTrackingManager } from "../MyScript/managers/ProgressTrackingManager";
 const { ccclass, property } = _decorator;
 
 // openFullscreen();
@@ -20,12 +21,14 @@ export class GameController extends Component {
 
  
 
-  redirectToStore() {    
+  redirectToStore() {
+    ProgressTrackingManager.instance?.trackCtaClicked();
     try {
       PlayableSDK.download();
-      PlayableSDK.game_end();            
+      PlayableSDK.game_end();
     } catch (error) {
-      
+      // Preview trong editor/Chrome không có PlayableSDK -> chỉ log để biết đã gọi
+      console.log("[GameController] redirectToStore (PlayableSDK không có trong preview)");
     }
   }
 }

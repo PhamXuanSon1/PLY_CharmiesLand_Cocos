@@ -181,10 +181,6 @@ export class UIManager extends Component implements IPointerHandler {
     }
 
     gotoStore(): void {
-        console.log("Test: goToStore");
-
-        // Còn lượt chơi tiếp -> mở store xong thì mở lại gameplay luôn,
-        // để khi người chơi quay lại (hoặc chạm tiếp) là chơi được ngay.
         const canContinue = this.isGameEnded && !this.continueUsed && this.continueItemCount > 0;
         if (canContinue) this.scheduleOnce(() => this.resumeAfterEndGame(), 0);
         if (this.gameController) {

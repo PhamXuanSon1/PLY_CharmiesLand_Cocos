@@ -242,8 +242,9 @@ export class ItemController extends Component implements IPointerHandler {
         if (snapped) {
             this.moveToTarget();
         } else {
-            // Thả hụt: FalseIcon ngay tại vị trí thả
+            // Thả hụt: FalseIcon ngay tại vị trí thả + sound Fail (đang phát dở thì stop rồi phát lại)
             this.spawnIcon(PlyPoolType.FalseIcon, this.node.worldPosition.clone());
+            Ply_SoundManager.Ins?.playFail();
             this.releaseTweezers();
             this.snapFailed();
         }

@@ -1,6 +1,7 @@
 
 import { _decorator, Component, EventTouch, Input, input, misc, Node, v2, Vec2 } from 'cc';
 import { ui } from './UI';
+import { ProgressTrackingManager } from '../MyScript/managers/ProgressTrackingManager';
 const { ccclass, property } = _decorator;
 
 export var ipm: InputManager = null;
@@ -28,6 +29,7 @@ export class InputManager extends Component {
         if(this.isFirtMove) {
             this.isFirtMove = false;
             ui.firstMove();
+            ProgressTrackingManager.instance?.startChallenge();   // CHALLENGE_STARTED
         }
     }
 

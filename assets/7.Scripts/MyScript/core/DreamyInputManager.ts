@@ -161,6 +161,16 @@ export class DreamyInputManager extends Component {
 
     // ------------------------------------------------------------ dispatch
     private onTouchStart(ev: EventTouch): void {
+        // Game đã kết thúc -> MỌI cú chạm đều mở store, không giới hạn số lần.
+        // Đặt trước mọi điều kiện khác: sau khi mở store (window.open) quay lại, engine có thể
+        // còn giữ touch cũ -> getAllTouches() >= 2 sẽ chặn nhầm nếu để phía dưới.
+        if (UIManager.instance?.isGameEnded) {
+            this.cancelCaptor();
+            this.activeTouches = 0;
+            UIManager.instance.gotoStore();
+            return;
+        }
+
         this.activeTouches = ev.getAllTouches()?.length ?? 1;
 
         // Unity: if (Input.touchCount >= 2) { isDragging = false; return; }
@@ -169,12 +179,6 @@ export class DreamyInputManager extends Component {
             return;
         }
         if (!DreamyInputManager.canInput) return;
-
-        // Nếu game đã kết thúc -> Mọi cú chạm tiếp theo trên màn hình sẽ mở store ngay
-        if (UIManager.instance?.isGameEnded) {
-            UIManager.instance.gotoStore();
-            return;
-        }
 
         const worldPos = DreamyInputManager.toWorld(ev);
 

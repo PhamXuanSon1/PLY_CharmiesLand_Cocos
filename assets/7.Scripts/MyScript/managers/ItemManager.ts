@@ -27,6 +27,7 @@ import { HolderSlot } from '../utils/HolderSlot';
 import { SeatHandler } from '../utils/SeatHandler';
 import { TweenUtil } from '../core/TweenUtil';
 import { UIManager } from './UIManager';
+import { ProgressTrackingManager } from './ProgressTrackingManager';
 
 const { ccclass, property } = _decorator;
 
@@ -340,6 +341,9 @@ export class ItemManager extends Component {
     itemArrivedAtTarget(): void {
         this.arrivedItemCount++;
         this.onItemCompleted();
+
+        // Analytics: CHALLENGE_PASS_25/50/75 + SOLVED theo % item ghép đúng
+        ProgressTrackingManager.instance?.addProgress(1);
 
         const ui = UIManager.instance;
         if (ui) {

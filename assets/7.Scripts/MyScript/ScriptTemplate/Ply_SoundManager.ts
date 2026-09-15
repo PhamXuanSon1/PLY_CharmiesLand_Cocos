@@ -34,10 +34,11 @@ export enum FxType {
     Rem = 25,
     ClothesDrop = 26,
     Decor = 27,
+    Fail = 28,
 }
 Enum(FxType);
 
-const FX_TYPE_COUNT = 28;
+const FX_TYPE_COUNT = 29;
 
 /**
  * Cau hinh du lieu am thanh.
@@ -144,6 +145,9 @@ class FxAudio {
 
     @property(SoundData)
     decor: SoundData = new SoundData();
+
+    @property(SoundData)
+    fail: SoundData = new SoundData();
 }
 
 /**
@@ -206,6 +210,17 @@ export class Ply_SoundManager extends Ply_Singleton {
         for (let i = 1; i < data.repeatCount; i++) {
             source.playOneShot(data.clip, data.volume);
         }
+    }
+
+    /**
+     * Sound Fail (spawn FalseIcon): neu dang phat do thi DUNG ngay va phat lai tu dau.
+     */
+    public playFail(): void {
+        if (this.isMute) return;
+        const index = FxType.Fail as number;
+        const src = this.fxSources[index];
+        if (src && src.playing) src.stop();
+        this.playFx(FxType.Fail);
     }
 
     /**
@@ -467,6 +482,7 @@ export class Ply_SoundManager extends Ply_Singleton {
             case FxType.Rem: return this.fxAudio.rem;
             case FxType.ClothesDrop: return this.fxAudio.clothesDrop;
             case FxType.Decor: return this.fxAudio.decor;
+            case FxType.Fail: return this.fxAudio.fail;
             default: return null;
         }
     }

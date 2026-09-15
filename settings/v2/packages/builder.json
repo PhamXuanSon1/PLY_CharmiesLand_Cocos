@@ -4,7 +4,7 @@
     "totalTime": 500,
     "logo": {
       "type": "custom",
-      "image": "project://settings/Logo.png"
+      "image": "project://settings/loadingscreen_logo.png"
     },
     "background": {
       "type": "color",

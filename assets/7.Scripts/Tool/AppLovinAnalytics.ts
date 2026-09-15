@@ -80,6 +80,7 @@ export class AppLovinAnalytics {
 AppLovinAnalytics.startLoading();
 
 director.once(Director.EVENT_BEFORE_SCENE_LAUNCH, () => {
+    AppLovinAnalytics.startLoading();
     AppLovinAnalytics.loaded();
 })
 

@@ -1,14 +1,14 @@
 {
   "__version__": "1.0.0",
-  "channel_AppLovin": false,
-  "appleUrl": "https://apps.apple.com/us/app/dreamy-room/id6742221896?platform=iphone",
-  "googleUrl": "https://play.google.com/store/apps/details?id=com.abi.dream.unpacking",
-  "compressionType": "none",
-  "channel_Facebook": false,
+  "channel_AppLovin": true,
+  "appleUrl": "https://apps.apple.com/us/app/charmies-land-sticker-doodle/id6751932954",
+  "googleUrl": "https://play.google.com/store/apps/details?id=com.abi.sticker.doodle&hl=vi",
+  "compressionType": "lossless",
+  "channel_Facebook": true,
   "channel_Google": true,
-  "channel_IronSource": false,
-  "channel_Mintegral": false,
-  "channel_Moloco": false,
-  "channel_TikTok": false,
-  "channel_Unity": false
+  "channel_IronSource": true,
+  "channel_Mintegral": true,
+  "channel_Moloco": true,
+  "channel_TikTok": true,
+  "channel_Unity": true
 }
