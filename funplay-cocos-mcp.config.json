@@ -1,0 +1,27 @@
+{
+  "host": "127.0.0.1",
+  "port": 27829,
+  "portMode": "project",
+  "clientConfigEntries": {
+    "claude_code": {
+      "serverName": "cocos-ply-dreamyro-efc5f4",
+      "url": "http://127.0.0.1:27829/",
+      "configPath": "C:\\Users\\Admin\\.claude.json",
+      "projectIdentity": "efc5f49560ea22e7c4e86750"
+    }
+  },
+  "toolProfile": "core",
+  "enabledTools": [],
+  "disabledTools": [],
+  "enabledToolCategories": [],
+  "disabledToolCategories": [],
+  "enableSessions": false,
+  "enableConsoleLogging": true,
+  "executeJavascriptSafetyChecks": true,
+  "autostart": true,
+  "maxInteractionLogEntries": 50,
+  "lastClientTargetId": "claude_code",
+  "activeToolProfileName": "",
+  "savedToolProfiles": [],
+  "language": "auto"
+}

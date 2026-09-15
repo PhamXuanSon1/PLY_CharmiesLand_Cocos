@@ -1,0 +1,47 @@
+{
+  "__version__": "1.0.6",
+  "general": {
+    "designResolution": {
+      "width": 1080,
+      "height": 2350,
+      "fitWidth": false,
+      "fitHeight": true
+    },
+    "renderPipeline": "fd8ec536-a354-4a17-9c74-4f3883c378c8"
+  },
+  "custom_joint_texture_layouts": [],
+  "physics": {
+    "collisionGroups": [],
+    "collisionMatrix": {
+      "0": 11,
+      "1": 31,
+      "2": 2,
+      "3": 19,
+      "4": 10
+    },
+    "gravity": {
+      "y": -100
+    }
+  },
+  "layer": [
+    {
+      "name": "Particle",
+      "value": 1
+    },
+    {
+      "name": "Item",
+      "value": 2
+    },
+    {
+      "name": "Box",
+      "value": 4
+    },
+    {
+      "name": "BaseRoom",
+      "value": 8
+    }
+  ],
+  "script": {
+    "preserveSymlinks": true
+  }
+}

@@ -1,0 +1,55 @@
+<div id="app">
+    <header>
+        <h2>Texture Compress Batch</h2>
+        <span class="hint">Tìm mọi SpriteFrame trong một thư mục và bật / tắt Texture Compress hàng loạt với preset đã tạo trong <b>Project Settings &rarr; Texture Compress</b>. Meta được ghi qua asset-db nên editor tự re-import.</span>
+    </header>
+
+    <section class="form">
+        <h3>1. Folder</h3>
+        <ui-drag-area id="drop" class="drop" droppable="cc.Asset">
+            <span class="hint">Kéo thư mục (hoặc một asset trong thư mục) từ panel Assets thả vào đây.</span>
+        </ui-drag-area>
+        <div class="row">
+            <ui-input id="folder" class="grow" placeholder="db://assets/..."></ui-input>
+            <ui-button id="useSelected">Use selected</ui-button>
+            <ui-button id="browse">Browse...</ui-button>
+        </div>
+
+        <h3>2. Preset</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Mode"></ui-label>
+            <ui-select slot="content" id="mode" class="grow">
+                <option value="enable">Enable compress</option>
+                <option value="disable">Disable compress</option>
+            </ui-select>
+        </ui-prop>
+        <ui-prop id="rowPreset">
+            <ui-label slot="label" value="Preset"></ui-label>
+            <div slot="content" class="row">
+                <ui-select id="preset" class="grow"></ui-select>
+                <ui-button id="reloadPresets" tooltip="Đọc lại builder.json">&#8635;</ui-button>
+            </div>
+        </ui-prop>
+        <div id="presetHint" class="hint indent"></div>
+
+        <h3>3. Options</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Include auto-atlas"></ui-label>
+            <ui-checkbox slot="content" id="includeAtlas"></ui-checkbox>
+        </ui-prop>
+        <ui-prop id="rowForce">
+            <ui-label slot="label" value="Override other preset"></ui-label>
+            <ui-checkbox slot="content" id="force"></ui-checkbox>
+        </ui-prop>
+
+        <div class="row actions">
+            <ui-button id="scan">Scan (dry run)</ui-button>
+            <ui-button id="apply" type="primary">Apply</ui-button>
+            <span class="grow"></span>
+            <span id="summary" class="hint"></span>
+        </div>
+    </section>
+
+    <div id="issues" class="hidden"></div>
+    <div id="list" class="panel list hidden"></div>
+</div>

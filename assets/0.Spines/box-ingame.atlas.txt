@@ -1,0 +1,102 @@
+box-ingame.png
+	size: 624, 1032
+	filter: Linear, Linear
+	pma: true
+BOX-Left-body
+	bounds: 2, 221, 160, 163
+	offsets: 16, 14, 195, 195
+	rotate: 90
+BOX-Right-body
+	bounds: 167, 198, 160, 163
+	offsets: 19, 14, 195, 195
+	rotate: 90
+BOX-inside
+	bounds: 2, 59, 160, 162
+	offsets: 17, 16, 195, 195
+	rotate: 90
+BOX-shadow
+	bounds: 454, 768, 163, 163
+	offsets: 16, 14, 195, 195
+Bot
+	bounds: 166, 16, 100, 100
+cap
+	bounds: 450, 278, 158, 78
+	offsets: 1, 2, 159, 80
+cap2
+	bounds: 446, 198, 158, 78
+	offsets: 0, 2, 159, 80
+capB
+	bounds: 446, 55, 155, 69
+	offsets: 2, 2, 159, 80
+capC
+	bounds: 446, 126, 156, 70
+	offsets: 1, 9, 159, 80
+extra-skin/BOX-green-stripe
+	bounds: 2, 383, 161, 163
+	offsets: 16, 14, 195, 195
+	rotate: 90
+extra-skin/BOX-green-stripe1
+	bounds: 454, 604, 162, 163
+	offsets: 17, 14, 195, 195
+	rotate: 90
+extra-skin/BOX-pink-stripe
+	bounds: 167, 360, 161, 163
+	offsets: 16, 14, 195, 195
+	rotate: 90
+extra-skin/BOX-pink-stripe1
+	bounds: 454, 440, 162, 163
+	offsets: 17, 14, 195, 195
+	rotate: 90
+extra-skin/cap
+	bounds: 450, 358, 158, 80
+	offsets: 1, 0, 159, 80
+extra-skin/cap-pink-stripe
+	bounds: 366, 442, 159, 80
+	rotate: 90
+extra-skin/cap2
+	bounds: 166, 118, 158, 78
+	offsets: 0, 2, 159, 80
+highlight
+	bounds: 2, 686, 343, 450
+	rotate: 90
+inside-stuff
+	bounds: 332, 211, 111, 112
+	offsets: 6, 13, 130, 130
+	rotate: 90
+l
+	bounds: 326, 21, 98, 104
+	offsets: 7, 4, 112, 112
+	rotate: 90
+planes
+	bounds: 332, 324, 116, 116
+	offsets: 6, 6, 128, 128
+tape0
+	bounds: 190, 523, 174, 161
+	offsets: 1, 7, 176, 168
+tape1
+	bounds: 2, 546, 186, 138
+	offsets: 0, 0, 189, 138
+tape2
+	bounds: 454, 933, 166, 96
+tape3
+	bounds: 332, 121, 112, 88
+tape4
+	bounds: 366, 603, 81, 86
+	offsets: 0, 0, 81, 88
+	rotate: 90
+zx4
+	bounds: 432, 10, 43, 38
+	offsets: 1, 1, 45, 40
+	rotate: 90
+zx5
+	bounds: 472, 10, 43, 38
+	offsets: 1, 1, 45, 40
+	rotate: 90
+zx6
+	bounds: 2, 2, 55, 43
+	offsets: 1, 1, 57, 45
+	rotate: 90
+zx9
+	bounds: 512, 10, 43, 38
+	offsets: 1, 1, 45, 40
+	rotate: 90

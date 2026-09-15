@@ -1,0 +1,126 @@
+<section class="page">
+  <header class="toolbar">
+    <div class="toolbar-left">
+      <ui-button id="scan-button" class="primary">Scan Playable</ui-button>
+      <label class="inline-field scan-source-field">
+        <span>Scan Source</span>
+        <select id="scan-source-select">
+          <option value="original">Original Build</option>
+          <option value="optimized">Optimized Copy (checking...)</option>
+        </select>
+      </label>
+      <ui-button id="optimize-export-button" class="accent">Optimize + Export All</ui-button>
+      <label class="inline-field grow">
+        <span>Build Root</span>
+        <ui-input id="build-root-input" value="build/web-mobile"></ui-input>
+      </label>
+      <label class="inline-field grow">
+        <span>Output Root</span>
+        <ui-input id="output-root-input" value="build/playable-size-inspector/web-mobile"></ui-input>
+      </label>
+      <label class="inline-field grow">
+        <span>Export Root</span>
+        <ui-input id="export-root-input" value="build/playable-size-inspector/exports"></ui-input>
+      </label>
+    </div>
+    <div class="toolbar-right">
+      <div id="summary" class="summary">Ready</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-copy">
+      <div class="hero-title">Playable Build Audit</div>
+      <div id="recommendation" class="hero-note">Scan the current web-mobile build to see every built file, grouped sizes, and import metadata.</div>
+    </div>
+    <div id="status" class="status">Idle</div>
+  </section>
+
+  <section class="content">
+    <div class="main-column">
+      <section class="panel-card tabs-card">
+        <div class="tabs-head">
+          <button id="tab-overview" class="tab-button active" data-tab="overview">Overview</button>
+          <button id="tab-types" class="tab-button" data-tab="types">Types</button>
+          <button id="tab-assets" class="tab-button" data-tab="assets">Assets</button>
+          <button id="tab-imports" class="tab-button" data-tab="imports">Import JSON</button>
+        </div>
+
+        <div id="panel-overview" class="tab-panel active">
+          <div class="panel-head">Build Overview</div>
+          <div id="overview" class="panel-content empty">Run a scan to populate build totals and type distribution.</div>
+        </div>
+
+        <div id="panel-types" class="tab-panel">
+          <div class="panel-head">Build Size By Type</div>
+          <div id="type-results" class="panel-content empty">Run a scan to group build files like Luna.</div>
+        </div>
+
+        <div id="panel-assets" class="tab-panel">
+          <div class="panel-head">
+            <span>All Built Files</span>
+            <div class="panel-actions">
+              <button id="filter-all" class="filter-button active" data-filter="all">All</button>
+              <button id="filter-texture" class="filter-button" data-filter="texture">Texture</button>
+              <button id="filter-audio" class="filter-button" data-filter="audio">Audio</button>
+              <button id="filter-font" class="filter-button" data-filter="font">Font</button>
+              <button id="filter-model" class="filter-button" data-filter="model-bin">Model</button>
+              <button id="filter-prefab" class="filter-button" data-filter="prefab">Prefab</button>
+              <button id="filter-import" class="filter-button" data-filter="import-json">Import</button>
+              <button id="filter-script" class="filter-button" data-filter="engine-js">Script</button>
+            </div>
+          </div>
+          <div class="batch-bar">
+            <div class="batch-bar-left">
+              <span class="batch-badge">⚡ Batch Optimize All PNGs:</span>
+              <label class="inline-field batch-field">
+                <span>PNG Quality</span>
+                <select id="batch-png-quality">
+                  <option value="80-95">High (80-95)</option>
+                  <option value="65-85" selected>Balanced (65-85) ⭐</option>
+                  <option value="50-75">Medium (50-75)</option>
+                  <option value="45-70">Aggressive (45-70)</option>
+                  <option value="30-50">Ultra Small (30-50)</option>
+                </select>
+              </label>
+              <button id="batch-apply-png-btn" class="action-button batch-apply-btn">⚡ Optimize All PNGs</button>
+              <button id="batch-reset-png-btn" class="action-button reset-button batch-reset-btn">Reset All PNGs</button>
+            </div>
+            <div id="batch-status" class="batch-status"></div>
+          </div>
+          <div class="batch-bar">
+            <div class="batch-bar-left">
+              <span class="batch-badge">🎵 Batch Optimize Ticked Audio:</span>
+              <label class="inline-field batch-field">
+                <span>Bitrate</span>
+                <select id="batch-audio-bitrate">
+                  <option value="128">128 kbps</option>
+                  <option value="96" selected>96 kbps ⭐</option>
+                  <option value="64">64 kbps</option>
+                  <option value="48">48 kbps</option>
+                  <option value="32">32 kbps</option>
+                </select>
+              </label>
+              <button id="batch-select-all-audio-btn" class="action-button batch-reset-btn">Select All Audio</button>
+              <button id="batch-clear-audio-btn" class="action-button batch-reset-btn">Clear Selection</button>
+              <button id="batch-apply-audio-btn" class="action-button batch-apply-btn">🎵 Optimize Ticked Audio</button>
+              <button id="batch-reset-audio-btn" class="action-button reset-button batch-reset-btn">Reset Ticked Audio</button>
+            </div>
+            <div id="batch-audio-status" class="batch-status"></div>
+          </div>
+          <div id="asset-results" class="panel-content empty">Run a scan to list every file included in the build.</div>
+        </div>
+
+        <div id="panel-imports" class="tab-panel">
+          <div class="panel-head">All Import JSON Files</div>
+          <div id="import-results" class="panel-content empty">Run a scan to trace every import JSON file.</div>
+        </div>
+      </section>
+    </div>
+
+    <aside class="detail-pane">
+      <div class="panel-head">Selection Detail</div>
+      <div id="detail" class="detail empty">Run a scan and pick a row to inspect.</div>
+    </aside>
+  </section>
+</section>

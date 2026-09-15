@@ -1,0 +1,101 @@
+{
+  "package_version": 2,
+  "name": "playable-size-inspector",
+  "version": "0.1.0",
+  "description": "Inspect playable build size and trace source assets",
+  "main": "./main.js",
+  "editor": ">=3.8.0",
+  "author": "Food Hunt",
+  "panels": {
+    "default": {
+      "title": "Playable Size Inspector",
+      "type": "dockable",
+      "main": "panels/default",
+      "size": {
+        "min-width": 760,
+        "min-height": 520,
+        "width": 1180,
+        "height": 760
+      }
+    }
+  },
+  "contributions": {
+    "panels": {
+      "default": {
+        "title": "Playable Size Inspector",
+        "type": "dockable",
+        "main": "panels/default",
+        "size": {
+          "min-width": 760,
+          "min-height": 520,
+          "width": 1180,
+          "height": 760
+        }
+      }
+    },
+    "menu": [
+      {
+        "path": "Extension/Playable Tools",
+        "label": "Playable Size Inspector",
+        "message": "open-panel"
+      },
+      {
+        "path": "Panel",
+        "label": "Playable Size Inspector",
+        "message": "open-panel"
+      },
+      {
+        "path": "Tools",
+        "label": "Playable Size Inspector",
+        "message": "open-panel"
+      }
+    ],
+    "messages": {
+      "open-panel": {
+        "methods": [
+          "openPanel"
+        ]
+      },
+      "reveal-asset": {
+        "methods": [
+          "revealAsset"
+        ]
+      },
+      "optimize-export-all": {
+        "methods": [
+          "optimizeExportAll"
+        ]
+      },
+      "optimize-selected-asset": {
+        "methods": [
+          "optimizeSelectedAsset"
+        ]
+      },
+      "reset-selected-asset": {
+        "methods": [
+          "resetSelectedAsset"
+        ]
+      },
+      "optimize-all-pngs": {
+        "methods": [
+          "optimizeAllPngs"
+        ]
+      },
+      "reset-all-pngs": {
+        "methods": [
+          "resetAllPngs"
+        ]
+      },
+      "optimize-selected-audio": {
+        "methods": [
+          "optimizeSelectedAudio"
+        ]
+      },
+      "reset-selected-audio": {
+        "methods": [
+          "resetSelectedAudio"
+        ]
+      }
+    }
+  }
+}

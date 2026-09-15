@@ -1,0 +1,7 @@
+library/
+local/
+temp/
+profiles/
+build/
+*.exe
+extensions/playable-size-inspector/tools/

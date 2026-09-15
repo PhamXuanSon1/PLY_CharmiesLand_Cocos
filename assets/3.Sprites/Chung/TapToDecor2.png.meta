@@ -1,0 +1,138 @@
+{
+  "ver": "1.0.27",
+  "importer": "image",
+  "imported": true,
+  "uuid": "779fc3a2-7435-4c9a-a568-f8b9e97cfbf8",
+  "files": [
+    ".json",
+    ".png"
+  ],
+  "subMetas": {
+    "6c48a": {
+      "importer": "texture",
+      "uuid": "779fc3a2-7435-4c9a-a568-f8b9e97cfbf8@6c48a",
+      "displayName": "TapToDecor2",
+      "id": "6c48a",
+      "name": "texture",
+      "userData": {
+        "wrapModeS": "clamp-to-edge",
+        "wrapModeT": "clamp-to-edge",
+        "imageUuidOrDatabaseUri": "779fc3a2-7435-4c9a-a568-f8b9e97cfbf8",
+        "isUuid": true,
+        "visible": false,
+        "minfilter": "linear",
+        "magfilter": "linear",
+        "mipfilter": "none",
+        "anisotropy": 0
+      },
+      "ver": "1.0.22",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    },
+    "f9941": {
+      "importer": "sprite-frame",
+      "uuid": "779fc3a2-7435-4c9a-a568-f8b9e97cfbf8@f9941",
+      "displayName": "TapToDecor2",
+      "id": "f9941",
+      "name": "spriteFrame",
+      "userData": {
+        "trimThreshold": 1,
+        "rotated": false,
+        "offsetX": 0,
+        "offsetY": -5,
+        "trimX": 49,
+        "trimY": 46,
+        "width": 623,
+        "height": 126,
+        "rawWidth": 721,
+        "rawHeight": 208,
+        "borderTop": 0,
+        "borderBottom": 0,
+        "borderLeft": 0,
+        "borderRight": 0,
+        "packable": true,
+        "pixelsToUnit": 100,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "meshType": 0,
+        "vertices": {
+          "rawPosition": [
+            -311.5,
+            -63,
+            0,
+            311.5,
+            -63,
+            0,
+            -311.5,
+            63,
+            0,
+            311.5,
+            63,
+            0
+          ],
+          "indexes": [
+            0,
+            1,
+            2,
+            2,
+            1,
+            3
+          ],
+          "uv": [
+            49,
+            162,
+            672,
+            162,
+            49,
+            36,
+            672,
+            36
+          ],
+          "nuv": [
+            0.06796116504854369,
+            0.17307692307692307,
+            0.9320388349514563,
+            0.17307692307692307,
+            0.06796116504854369,
+            0.7788461538461539,
+            0.9320388349514563,
+            0.7788461538461539
+          ],
+          "minPos": [
+            -311.5,
+            -63,
+            0
+          ],
+          "maxPos": [
+            311.5,
+            63,
+            0
+          ]
+        },
+        "isUuid": true,
+        "imageUuidOrDatabaseUri": "779fc3a2-7435-4c9a-a568-f8b9e97cfbf8@6c48a",
+        "atlasUuid": "",
+        "trimType": "auto"
+      },
+      "ver": "1.0.12",
+      "imported": true,
+      "files": [
+        ".json"
+      ],
+      "subMetas": {}
+    }
+  },
+  "userData": {
+    "type": "sprite-frame",
+    "fixAlphaTransparencyArtifacts": false,
+    "hasAlpha": true,
+    "redirect": "779fc3a2-7435-4c9a-a568-f8b9e97cfbf8@6c48a",
+    "compressSettings": {
+      "useCompressTexture": true,
+      "presetId": "03/m4ybQVOJ7SPOhieTjrl"
+    }
+  }
+}

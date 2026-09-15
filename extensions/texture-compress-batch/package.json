@@ -1,0 +1,43 @@
+{
+  "package_version": 2,
+  "name": "texture-compress-batch",
+  "version": "1.0.0",
+  "description": "Find every SpriteFrame (and optionally auto-atlas) under a folder and enable / disable Texture Compress with a chosen preset in one go.",
+  "author": "PLY",
+  "editor": ">=3.7.0",
+  "main": "./main.js",
+  "panels": {
+    "default": {
+      "title": "Texture Compress Batch",
+      "type": "dockable",
+      "main": "./src/panels/default.js",
+      "size": {
+        "min-width": 520,
+        "min-height": 420,
+        "width": 680,
+        "height": 720
+      }
+    }
+  },
+  "contributions": {
+    "menu": [
+      { "path": "Tool", "label": "Texture Compress Batch", "message": "open-panel" },
+      { "path": "i18n:menu.panel/Texture Compress Batch", "label": "Open Panel", "message": "open-panel" }
+    ],
+    "assets": {
+      "menu": {
+        "methods": "./src/assets-menu.js"
+      }
+    },
+    "messages": {
+      "open-panel": { "methods": ["openPanel"] },
+      "list-presets": { "methods": ["listPresets"] },
+      "collect-selected": { "methods": ["collectSelected"] },
+      "browse-folder": { "methods": ["browseFolder"] },
+      "resolve-folder": { "methods": ["resolveFolder"] },
+      "scan": { "methods": ["scan"] },
+      "apply": { "methods": ["apply"] },
+      "apply-from-menu": { "methods": ["applyFromMenu"] }
+    }
+  }
+}

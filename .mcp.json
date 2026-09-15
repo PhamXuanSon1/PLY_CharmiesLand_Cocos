@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "funplay-cocos": {
+      "type": "http",
+      "url": "http://127.0.0.1:27829/"
+    },
+    "fetch": {
+      "command": "C:\\Users\\Admin\\.local\\bin\\uv.exe",
+      "args": ["tool", "run", "mcp-server-fetch"]
+    },
+    "git": {
+      "command": "C:\\Users\\Admin\\.local\\bin\\uv.exe",
+      "args": [
+        "tool",
+        "run",
+        "mcp-server-git",
+        "--repository",
+        "f:\\CocosProject\\PLY_Dreamyroom_Cocos"
+      ]
+    }
+  }
+}
