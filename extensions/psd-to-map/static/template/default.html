@@ -1,0 +1,97 @@
+<div id="app">
+    <header>
+        <h2>PSD to Map</h2>
+        <span class="hint">Xuất PSD thành PNG + JSON (<b>tools/psd2map.py</b>), tự chuyển PNG sang <b>sprite-frame</b>, rồi dựng thẳng node vào scene đang mở (node thường, không cần component SceneBuilder).</span>
+    </header>
+
+    <div id="envIssue" class="issue error hidden">
+        <span id="envText"></span>
+        <ui-button id="installDeps" class="hidden">Cài psd-tools</ui-button>
+    </div>
+
+    <section class="form">
+        <h3>1. File PSD</h3>
+        <ui-drag-area id="drop" class="drop" droppable="cc.Asset">
+            <span class="hint">Kéo file <b>.psd</b> từ panel Assets (hoặc từ Explorer) thả vào đây.</span>
+        </ui-drag-area>
+        <div class="row">
+            <ui-input id="psd" class="grow" placeholder="F:\...\map.psd"></ui-input>
+            <ui-button id="useSelected">Use selected</ui-button>
+            <ui-button id="browse">Browse...</ui-button>
+        </div>
+        <div id="psdInfo" class="hint indent"></div>
+
+        <h3>2. Tuỳ chọn</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Artboard"></ui-label>
+            <div slot="content" class="row">
+                <ui-select id="artboard" class="grow"></ui-select>
+                <ui-button id="reloadArtboards" tooltip="Đọc lại artboard">&#8635;</ui-button>
+            </div>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Thư mục xuất"></ui-label>
+            <div slot="content" class="row">
+                <ui-input id="out" class="grow" placeholder="db://assets/3.Sprites/<tên psd>"></ui-input>
+                <ui-button id="openOut" tooltip="Mở trong Explorer">&#128193;</ui-button>
+            </div>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Xuất cả layer ẩn" tooltip="--hidden"></ui-label>
+            <ui-checkbox slot="content" id="hidden"></ui-checkbox>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Bỏ qua layer (regex)" tooltip="--skip. Cẩn thận: ^Curves có thể bỏ mất BG"></ui-label>
+            <ui-input slot="content" id="skip" placeholder="(trống = không bỏ)"></ui-input>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Đổi tên node"></ui-label>
+            <div slot="content" class="row">
+                <span id="namesInfo" class="hint grow"></span>
+                <ui-button id="namesTemplate" tooltip="Tạo / cập nhật &lt;tên&gt;.names.json với mọi path node, rồi mở ra để sửa">Tạo / sửa names.json</ui-button>
+            </div>
+        </ui-prop>
+
+        <div class="row actions">
+            <ui-button id="export" type="primary">Export</ui-button>
+            <span class="grow"></span>
+            <span id="summary" class="hint"></span>
+        </div>
+
+        <h3>3. Dựng vào scene</h3>
+        <ui-prop>
+            <ui-label slot="label" value="Tên node"></ui-label>
+            <ui-input slot="content" id="nodeName" placeholder="(mặc định = tên psd)"></ui-input>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Dưới node đang chọn" tooltip="Tắt = đặt dưới Canvas"></ui-label>
+            <ui-checkbox slot="content" id="underSelected"></ui-checkbox>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Ghi đè node cùng tên" tooltip="Xoá node cũ cùng tên dưới node cha trước khi dựng (mất các chỉnh sửa tay trên node đó)"></ui-label>
+            <ui-checkbox slot="content" id="replace"></ui-checkbox>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Sprite ở node con" tooltip="Bật: node gốc chỉ có UITransform, ảnh nằm ở node con &lt;tên&gt;Image. Tắt: Sprite gắn thẳng lên node."></ui-label>
+            <ui-checkbox slot="content" id="spriteInChild" value="true"></ui-checkbox>
+        </ui-prop>
+        <ui-prop>
+            <ui-label slot="label" value="Sắp xếp theo layer" tooltip="Đặt siblingIndex theo thứ tự layer PSD (sortingOrder)"></ui-label>
+            <ui-checkbox slot="content" id="applySorting" value="true"></ui-checkbox>
+        </ui-prop>
+        <div class="row actions">
+            <ui-button id="build">Dựng vào scene</ui-button>
+            <ui-button id="exportBuild" type="primary">Export + Dựng</ui-button>
+            <span class="grow"></span>
+            <span class="hint">Xong nhớ <b>Ctrl+S</b></span>
+        </div>
+    </section>
+
+    <div id="issues" class="hidden"></div>
+
+    <div class="row loghead">
+        <h3 class="grow">Log</h3>
+        <ui-button id="clearLog">Clear</ui-button>
+    </div>
+    <div id="log" class="panel log"></div>
+</div>

@@ -1,0 +1,149 @@
+:host {
+    display: flex;
+    height: 100%;
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    width: 100%;
+    overflow-y: auto;
+    font-size: 12px;
+    color: var(--color-normal-contrast-emphasis, #ccc);
+}
+
+header h2 {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+}
+
+h3 {
+    margin: 10px 0 2px 0;
+    font-size: 12px;
+    color: var(--color-normal-contrast-weakest, #999);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.hint {
+    color: var(--color-normal-contrast-weakest, #888);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.hint.indent {
+    padding-left: 4px;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    width: 100%;
+}
+
+.grow {
+    flex: 1;
+    min-width: 0;
+}
+
+.drop {
+    display: block;
+    border: 1px dashed var(--color-normal-border-emphasis, #555);
+    border-radius: 3px;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 2px;
+}
+
+.drop.hover {
+    border-color: var(--color-focus-border, #7bb1e6);
+    background: var(--color-normal-fill-emphasis, #2a2a2a);
+}
+
+.actions {
+    margin-top: 8px;
+}
+
+.panel {
+    border: 1px solid var(--color-normal-border, #2c2c2c);
+    border-radius: 3px;
+    padding: 8px;
+    background: var(--color-normal-fill-emphasis, #2a2a2a);
+}
+
+.hidden {
+    display: none !important;
+}
+
+.loghead h3 {
+    margin: 4px 0 0 0;
+}
+
+.log {
+    flex: 1;
+    min-height: 160px;
+    overflow: auto;
+    font-family: Consolas, 'Courier New', monospace;
+    font-size: 11px;
+    line-height: 1.45;
+    white-space: pre;
+}
+
+.log .cmd {
+    color: #7bb1e6;
+}
+
+.log .err {
+    color: #e58a8a;
+}
+
+.log .ok {
+    color: #6cc36c;
+}
+
+.log .warn {
+    color: #e0b85c;
+}
+
+.log .dim {
+    color: var(--color-normal-contrast-weakest, #777);
+}
+
+.issue {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 8px;
+    border-radius: 3px;
+    line-height: 1.4;
+    margin-bottom: 2px;
+}
+
+.issue.error {
+    background: rgba(208, 92, 92, 0.18);
+    color: #e58a8a;
+}
+
+.issue.info {
+    background: rgba(123, 177, 230, 0.15);
+    color: #9ec5ee;
+}
+
+.issue.ok {
+    background: rgba(108, 195, 108, 0.15);
+    color: #8fd48f;
+}
+
+.issue.warn {
+    background: rgba(224, 184, 92, 0.15);
+    color: #e0c37a;
+}

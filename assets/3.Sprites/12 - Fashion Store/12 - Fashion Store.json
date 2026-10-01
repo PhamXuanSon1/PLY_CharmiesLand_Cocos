@@ -1,0 +1,3481 @@
+{
+  "meta": {
+    "K": 100,
+    "scene": "Root",
+    "exportRoot": null,
+    "exportInactive": false,
+    "source": "12 - Fashion Store.psd",
+    "artboardSize": [
+      1148,
+      1270
+    ]
+  },
+  "assetMap": {},
+  "nodes": [
+    {
+      "path": "Room Base (base_10)",
+      "parentPath": null,
+      "active": true,
+      "pos": [
+        3.5,
+        17.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "Room Base (base_10)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          1023,
+          1156
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 10,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers",
+      "parentPath": null,
+      "active": true,
+      "pos": [
+        0,
+        0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "path": "Stickers/S1-G1-01 1_3 (order 1)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        119.5,
+        -32.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G1-01 1_3 (order 1)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          261,
+          308
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 20,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G1-02 36_7 (order 1)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        339.0,
+        -71.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G1-02 36_7 (order 1)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          148,
+          77
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 30,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G7-03 33_17 (order 1)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -205.5,
+        -387.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G7-03 33_17 (order 1)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          155,
+          81
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 40,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G2-01 2_6 (order 2)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        37.5,
+        29.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G2-01 2_6 (order 2)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          75,
+          54
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 50,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G2-02 4_7 (order 2)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        38.0,
+        -26.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G2-02 4_7 (order 2)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          74,
+          57
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 60,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G2-03 8_5 (order 2)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -99.0,
+        -81.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G2-03 8_5 (order 2)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          228,
+          255
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 70,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G2-04 37_9 (order 2)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        310.0,
+        -38.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G2-04 37_9 (order 2)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          58,
+          59
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 80,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G5-02 9_18 (order 2)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        312.5,
+        -228.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G5-02 9_18 (order 2)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          359,
+          187
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 90,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G3-01 3_0 (order 3)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        93.0,
+        1.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G3-01 3_0 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          72,
+          56
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 100,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G3-02 5_17 (order 3)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        98.0,
+        -50.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G3-02 5_17 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          76,
+          57
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 110,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G3-03 10_16 (order 3)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -39.0,
+        -43.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G3-03 10_16 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          110,
+          151
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 120,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G3-04 38_7 (order 3)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        366.0,
+        -51.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G3-04 38_7 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          70,
+          69
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 130,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G6-02 18_9 (order 3)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        192.0,
+        -142.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G6-02 18_9 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          72,
+          82
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 140,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G6-03 15_12 (order 3)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        445.5,
+        -159.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G6-03 15_12 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          87,
+          99
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 150,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G4-01 7_17 (order 4)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        152.5,
+        -24.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G4-01 7_17 (order 4)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          75,
+          53
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 160,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G4-02 6_14 (order 4)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        154.0,
+        -76.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G4-02 6_14 (order 4)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          72,
+          57
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 170,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G4-03 11_6 (order 4)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -72.0,
+        -58.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G4-03 11_6 (order 4)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          112,
+          150
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 180,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G7-02 15_12 (order 4)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        419.5,
+        -173.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G6-03 15_12 (order 3)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          87,
+          99
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 190,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G7-03 19_6 (order 4)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        252.0,
+        -154.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G7-03 19_6 (order 4)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          102,
+          125
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 200,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G5-01 12_2 (order 5)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -104.5,
+        -77.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G5-01 12_2 (order 5)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          91,
+          156
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 210,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G8-02 17_8 (order 5)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        378.5,
+        -194.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G8-02 17_8 (order 5)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          83,
+          85
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 220,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G6-01 13_1 (order 6)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -138.5,
+        -92.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G6-01 13_1 (order 6)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          101,
+          154
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 230,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G10-01 20_1 (order 6)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        306.5,
+        -210.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G10-01 20_1 (order 6)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          83,
+          119
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 240,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G7-01 14_8 (order 7)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -190.5,
+        -125.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G7-01 14_8 (order 7)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          67,
+          182
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 250,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G8-01 21_19 (order 8)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -256.5,
+        -148.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G8-01 21_19 (order 8)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          147,
+          227
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 260,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G8-03 22_4 (order 8)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -12.0,
+        -240.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G8-03 22_4 (order 8)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          326,
+          252
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 270,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G9-01 23_11 (order 9)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -45.0,
+        -107.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G9-01 23_11 (order 9)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          80,
+          96
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 280,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G9-02 23_11 (order 9)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        25.0,
+        -140.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G9-01 23_11 (order 9)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          80,
+          96
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 290,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G9-03 23_11 (order 9)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        94.0,
+        -172.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G9-01 23_11 (order 9)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          80,
+          96
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 300,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G9-04 29_7 (order 9)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -107.5,
+        -176.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G9-04 29_7 (order 9)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          93,
+          73
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 310,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G7-02 32_12 (order 9)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        190.5,
+        -342.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G7-02 32_12 (order 9)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          231,
+          168
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 320,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G10-02 26_5 (order 10) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -45.5,
+        -97.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G10-02 26_5 (order 10) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          55,
+          43
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 330,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G10-03 27_12 (order 10) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        30.0,
+        -125.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G10-03 27_12 (order 10) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          46,
+          36
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 340,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G10-04 30_18 (order 10)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -41.0,
+        -196.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G10-04 30_18 (order 10)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          94,
+          81
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 350,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G11-01 28_15 (order 10) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        97.5,
+        -152.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G11-01 28_15 (order 10) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          61,
+          49
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 360,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G9-01 34_6 (order 10)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -37.0,
+        -413.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G9-01 34_6 (order 10)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          248,
+          149
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 370,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S1-G11-02 31_7 (order 11)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        31.0,
+        -232.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S1-G11-02 31_7 (order 11)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          90,
+          71
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 380,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G1-01 39_9 (order 12)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        16.0,
+        29.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G1-01 39_9 (order 12)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          956,
+          351
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 390,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G1-02 40_18 (order 12)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        316.5,
+        209.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G1-02 40_18 (order 12)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          309,
+          319
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 400,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G1-01 41_6 (order 12)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -214.0,
+        205.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G1-01 41_6 (order 12)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          304,
+          315
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 410,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G1-02 74_3 (order 12) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -395.0,
+        210.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G1-02 74_3 (order 12) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          72,
+          82
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 420,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G10-01 35_19 (order 12)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -35.0,
+        -335.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G10-01 35_19 (order 12)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          232,
+          260
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 430,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G2-01 42_12 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        48.0,
+        280.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G2-01 42_12 (order 13)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          244,
+          343
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 440,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G2-02 47_5 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        229.5,
+        259.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G2-02 47_5 (order 13)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          125,
+          168
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 450,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G2-03 59_15 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        249.0,
+        81.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G2-03 59_15 (order 13)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          152,
+          134
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 460,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G6-01 63_16 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        361.0,
+        9.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G6-01 63_16 (order 13)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          108,
+          104
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 470,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G1-03 32_12 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -199.5,
+        27.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G7-02 32_12 (order 9)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          231,
+          168
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 480,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G2-01 51_13 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -133.5,
+        294.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G2-01 51_13 (order 13)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          81,
+          86
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 490,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G2-02 55_8 (order 13)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -118.5,
+        206.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G2-02 55_8 (order 13)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          81,
+          62
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 500,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G3-01 48_16 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        285.0,
+        237.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G3-01 48_16 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          118,
+          169
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 510,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G3-02 64_0 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        13.5,
+        69.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G3-02 64_0 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          111,
+          151
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 520,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G3-03 43_0 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -2.0,
+        372.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G3-03 43_0 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          74,
+          53
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 530,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G4-02 60_0 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        226.5,
+        169.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G4-02 60_0 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          81,
+          106
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 540,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G3-01 52_3 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -189.5,
+        271.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G3-01 52_3 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          87,
+          86
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 550,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G3-02 56_2 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -185.0,
+        177.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G3-02 56_2 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          82,
+          66
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 560,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G3-03 72_17 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -84.5,
+        145.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G3-03 72_17 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          93,
+          86
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 570,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G4-02 57_10 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -247.5,
+        147.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G4-02 57_10 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          81,
+          62
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 580,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G5-02 58_12 (order 14)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -311.5,
+        118.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G5-02 58_12 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          81,
+          63
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 590,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G4-01 44_16 (order 15)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        8.0,
+        304.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G4-01 44_16 (order 15)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          100,
+          143
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 600,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G4-03 49_4 (order 15)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        337.0,
+        210.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G4-03 49_4 (order 15)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          118,
+          169
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 610,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G4-04 66 (order 15)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        147.5,
+        25.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G4-04 66 (order 15)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          267,
+          230
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 620,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G4-01 53_15 (order 15)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -241.0,
+        247.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G4-01 53_15 (order 15)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          82,
+          86
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 630,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G6-01 69_14 (order 15)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -383.5,
+        59.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G6-01 69_14 (order 15)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          133,
+          161
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 640,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S4-G1-02 73_3 (order 15)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -88.5,
+        177.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S4-G1-02 73_3 (order 15)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          75,
+          64
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 650,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G5-01 45_9 (order 16)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        47.0,
+        369.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G5-01 45_9 (order 16)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          198,
+          45
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 660,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G5-02 50 (order 16)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        397.0,
+        179.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G5-02 50 (order 16)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          120,
+          169
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 670,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G5-03 61_1 (order 16)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        284.0,
+        129.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G5-03 61_1 (order 16)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          56,
+          58
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 680,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G6-02 64_0 (order 16)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        248.5,
+        -25.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G3-02 64_0 (order 14)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          111,
+          151
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 690,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G5-01 54_12 (order 16)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -297.0,
+        222.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G5-01 54_12 (order 16)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          84,
+          86
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 700,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S2-G6-03 46_7 (order 17)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        81.0,
+        269.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S2-G6-03 46_7 (order 17)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          122,
+          235
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 710,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G6-02 68_0 (order 17)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        83.0,
+        -9.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G6-02 68_0 (order 17)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          804,
+          205
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 720,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S4-G1-01 62_13 (order 17)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        237.5,
+        103.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S4-G1-01 62_13 (order 17)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          75,
+          69
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 730,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G7-01 70_9 (order 18)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -360.5,
+        -155.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G7-01 70_9 (order 18)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          281,
+          442
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 740,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G8-01 77_14 (order 18)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        487.5,
+        12.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G8-01 77_14 (order 18)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          95,
+          720
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 750,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G8-02 77_14 (order 18)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -484.5,
+        -23.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G8-01 77_14 (order 18)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          95,
+          720
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 760,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S4-G1-03 71_17 (order 18) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        29.5,
+        235.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S4-G1-03 71_17 (order 18) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          169,
+          172
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 770,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G9-02 78_12 (order 19)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -428.0,
+        -371.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G9-02 78_12 (order 19)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          212,
+          160
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 780,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S4-G1-04 75_5 (order 19) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -250.0,
+        -269.5,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S4-G1-04 75_5 (order 19) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          132,
+          155
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 790,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G10-02 79_10 (order 20)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -280.5,
+        -456.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G10-02 79_10 (order 20)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          217,
+          154
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 800,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S4-G2-01 76_2 (order 20) [anim]",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -187.5,
+        -353.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S4-G2-01 76_2 (order 20) [anim]",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          93,
+          96
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 810,
+        "flipX": false,
+        "flipY": false
+      }
+    },
+    {
+      "path": "Stickers/S3-G11-01 78_12 (order 21)",
+      "parentPath": "Stickers",
+      "active": true,
+      "pos": [
+        -138.0,
+        -515.0,
+        0
+      ],
+      "rot": [
+        0,
+        0,
+        0
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "sprite": {
+        "key": "S3-G9-02 78_12 (order 19)",
+        "guid": "",
+        "ppu": 100,
+        "nativeSize": [
+          212,
+          160
+        ],
+        "pivot": [
+          0.5,
+          0.5
+        ],
+        "color": [
+          1,
+          1,
+          1,
+          1.0
+        ],
+        "sortingOrder": 820,
+        "flipX": false,
+        "flipY": false
+      }
+    }
+  ],
+  "conflicts": []
+}

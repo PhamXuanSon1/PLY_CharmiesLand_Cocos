@@ -163,12 +163,21 @@ def main():
     ap.add_argument('--skip', help='Regex tên layer cần bỏ qua, vd "^Curves|^Hue"')
     ap.add_argument('--hidden', action='store_true', help='Xuất cả layer đang ẩn')
     ap.add_argument('--names', help='JSON map tên node (mặc định: <out>/<tên psd>.names.json nếu có)')
+    ap.add_argument('--list', action='store_true', help='Chi liet ke artboard roi thoat')
     ap.add_argument('-q', '--quiet', action='store_true')
     a = ap.parse_args()
 
     psd_path = Path(a.psd)
     out = Path(a.out) if a.out else Path('assets/3.Sprites') / psd_path.stem
     psd = PSDImage.open(psd_path)
+    if a.list:
+        boards = [l for l in psd if l.kind == 'artboard']
+        print(f'PSD {psd_path.name} {psd.size}')
+        if not boards:
+            print('  (khong co artboard - xuat ca file)')
+        for i, b in enumerate(boards, 1):
+            print(f'  {i}. {b.name}  bbox={b.bbox}')
+        return
     root, bbox = find_artboard(psd, a.artboard)
     ab_name = getattr(root, 'name', psd_path.stem)
     print(f'PSD {psd_path.name} {psd.size}  artboard {ab_name!r} bbox={bbox}  -> {out}')

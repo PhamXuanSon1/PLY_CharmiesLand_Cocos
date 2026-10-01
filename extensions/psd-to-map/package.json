@@ -1,0 +1,50 @@
+{
+  "package_version": 2,
+  "name": "psd-to-map",
+  "version": "1.0.0",
+  "description": "Export a PSD to PNG + SceneBuilder JSON (tools/psd2map.py), fix sprite-frame import and build it into the open scene.",
+  "author": "PLY",
+  "editor": ">=3.7.0",
+  "main": "./main.js",
+  "panels": {
+    "default": {
+      "title": "PSD to Map",
+      "type": "dockable",
+      "main": "./src/panels/default.js",
+      "size": {
+        "min-width": 520,
+        "min-height": 480,
+        "width": 680,
+        "height": 760
+      }
+    }
+  },
+  "contributions": {
+    "menu": [
+      { "path": "Tool", "label": "PSD to Map", "message": "open-panel" }
+    ],
+    "assets": {
+      "menu": {
+        "methods": "./src/assets-menu.js"
+      }
+    },
+    "scene": {
+      "script": "./src/scene.js"
+    },
+    "messages": {
+      "open-panel": { "methods": ["openPanel"] },
+      "open-with": { "methods": ["openWith"] },
+      "collect-selected": { "methods": ["collectSelected"] },
+      "browse-psd": { "methods": ["browsePsd"] },
+      "resolve-psd": { "methods": ["resolvePsd"] },
+      "list-artboards": { "methods": ["listArtboards"] },
+      "install-deps": { "methods": ["installDeps"] },
+      "export": { "methods": ["exportPsd"] },
+      "names-template": { "methods": ["namesTemplate"] },
+      "build-scene": { "methods": ["buildScene"] },
+      "reveal": { "methods": ["reveal"] },
+      "psd-to-map:log": { "methods": ["default.onLog"] },
+      "psd-to-map:select": { "methods": ["default.onSelect"] }
+    }
+  }
+}
