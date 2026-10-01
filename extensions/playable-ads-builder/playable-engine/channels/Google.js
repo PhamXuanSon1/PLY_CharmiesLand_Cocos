@@ -34,12 +34,12 @@ window.PlayableSDK = {
     } catch (_0x397a83) {
       console.warn("[PlayableSDK:" + this.channel + ":download] ExitApi.exit failed, falling back to window.open", _0x397a83);
     }
-    const _0xfbc5cf = this.detectOS();
-    if (_0xfbc5cf === "iOS" || _0xfbc5cf === "macOS") {
-      window.open(this.apple_url || this.google_url, "_blank");
-    } else {
-      window.open(this.google_url || this.apple_url, "_blank");
-    }
+    // const _0xfbc5cf = this.detectOS();
+    // if (_0xfbc5cf === "iOS" || _0xfbc5cf === "macOS") {
+    //   window.open(this.apple_url || this.google_url, "_blank");
+    // } else {
+    //   window.open(this.google_url || this.apple_url, "_blank");
+    // }
   },
   game_ready() {
     console.log("[PlayableSDK]", this.channel, "game_ready()");

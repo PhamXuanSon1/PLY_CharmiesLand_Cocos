@@ -34,12 +34,12 @@ window.PlayableSDK = {
     } catch (_0x4d603d) {
       console.warn("[PlayableSDK:" + this.channel + ":download] window.install failed, falling back to window.open", _0x4d603d);
     }
-    const _0x541c92 = this.detectOS();
-    if (_0x541c92 === "iOS" || _0x541c92 === "macOS") {
-      window.open(this.apple_url || this.google_url, "_blank");
-    } else {
-      window.open(this.google_url || this.apple_url, "_blank");
-    }
+    // const _0x541c92 = this.detectOS();
+    // if (_0x541c92 === "iOS" || _0x541c92 === "macOS") {
+    //   window.open(this.apple_url || this.google_url, "_blank");
+    // } else {
+    //   window.open(this.google_url || this.apple_url, "_blank");
+    // }
   },
   game_ready() {
     console.log("[PlayableSDK]", this.channel, "game_ready()");

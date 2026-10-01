@@ -30,17 +30,6 @@ window.BingoEngine = {
         return _0x491f3b;
       }
     }
-    // Builder nén audio -> file trong zip là .mp3 nhưng runtime vẫn xin theo ext gốc (.ogg/.wav/...).
-    // Thử lại với .mp3 trước khi bó tay (decodeAudioData không quan tâm ext nên phát bình thường).
-    const _0xaudioExt = /\.(ogg|wav|m4a|aac|flac)(\?.*)?$/i;
-    if (_0xaudioExt.test(_0xf80e18)) {
-      const _0xmp3 = _0xf80e18.replace(_0xaudioExt, ".mp3");
-      for (let _0x491f3b of _0x39e763.keys()) {
-        if (_0x491f3b === _0xmp3 || _0xmp3.endsWith(_0x491f3b)) {
-          return _0x491f3b;
-        }
-      }
-    }
     return null;
   },
   getResource(_0x269913) {

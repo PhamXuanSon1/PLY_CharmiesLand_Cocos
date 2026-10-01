@@ -1,38 +1,3 @@
-"use strict";
-var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    var desc = Object.getOwnPropertyDescriptor(m, k);
-    if (!desc || ("get" in desc ? !m.__esModule : desc.writable || desc.configurable)) {
-      desc = { enumerable: true, get: function() { return m[k]; } };
-    }
-    Object.defineProperty(o, k2, desc);
-}) : (function(o, m, k, k2) {
-    if (k2 === undefined) k2 = k;
-    o[k2] = m[k];
-}));
-var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
-    Object.defineProperty(o, "default", { enumerable: true, value: v });
-}) : function(o, v) {
-    o["default"] = v;
-});
-var __importStar = (this && this.__importStar) || (function () {
-    var ownKeys = function(o) {
-        ownKeys = Object.getOwnPropertyNames || function (o) {
-            var ar = [];
-            for (var k in o) if (Object.prototype.hasOwnProperty.call(o, k)) ar[ar.length] = k;
-            return ar;
-        };
-        return ownKeys(o);
-    };
-    return function (mod) {
-        if (mod && mod.__esModule) return mod;
-        var result = {};
-        if (mod != null) for (var k = ownKeys(mod), i = 0; i < k.length; i++) if (k[i] !== "default") __createBinding(result, mod, k[i]);
-        __setModuleDefault(result, mod);
-        return result;
-    };
-})();
-Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Worker nén ảnh - CHỦ ĐÍCH chạy như 1 tiến trình Node THUẦN, tách rời khỏi renderer process
  * của Cocos Creator.
@@ -54,41 +19,61 @@ Object.defineProperty(exports, "__esModule", { value: true });
  *   resultFile.json (ghi ra): { [id]: { compressed: boolean, originalSize?: number, compressedSize?: number, error?: string } }
  *   Ảnh nén thành công được ghi ra "<outDir>/<id>.webp".
  */
-const fs = __importStar(require("fs"));
-const path = __importStar(require("path"));
+import * as fs from 'fs';
+import * as path from 'path';
 // @ts-ignore - sharp tự kèm type definition trong gói, nhưng resolve qua node_modules runtime của extension
-const sharp = require("sharp");
+import sharp = require('sharp');
+
+interface IJobImage {
+    id: number;
+    input: string;
+}
+
+interface IJob {
+    compression: { type: 'none' | 'lossy' | 'lossless'; quality: number };
+    outDir: string;
+    images: IJobImage[];
+}
+
+interface IResultEntry {
+    compressed: boolean;
+    originalSize?: number;
+    compressedSize?: number;
+    error?: string;
+}
+
 async function main() {
     const jobFile = process.argv[2];
     const resultFile = process.argv[3];
     if (!jobFile || !resultFile) {
         throw new Error('Thiếu tham số jobFile/resultFile.');
     }
-    const job = JSON.parse(fs.readFileSync(jobFile, 'utf-8'));
-    const results = {};
+    const job: IJob = JSON.parse(fs.readFileSync(jobFile, 'utf-8'));
+    const results: Record<number, IResultEntry> = {};
+
     for (const img of job.images) {
         try {
             const raw = fs.readFileSync(img.input);
             const webpOptions = job.compression.type === 'lossless' ? { lossless: true } : { quality: job.compression.quality };
-            const compressed = await sharp(raw).webp(webpOptions).toBuffer();
+            const compressed: Buffer = await sharp(raw).webp(webpOptions).toBuffer();
             if (compressed.length < raw.length) {
                 fs.writeFileSync(path.join(job.outDir, `${img.id}.webp`), compressed);
                 results[img.id] = { compressed: true, originalSize: raw.length, compressedSize: compressed.length };
-            }
-            else {
+            } else {
                 results[img.id] = { compressed: false, originalSize: raw.length, compressedSize: compressed.length };
             }
-        }
-        catch (err) {
+        } catch (err: any) {
             results[img.id] = { compressed: false, error: String((err && err.message) || err) };
         }
     }
+
     fs.writeFileSync(resultFile, JSON.stringify(results));
 }
+
 main()
     .then(() => process.exit(0))
     .catch(err => {
-    // stderr của tiến trình con được build-engine.ts đọc lại để log lỗi thật khi spawn thất bại.
-    console.error((err && err.stack) || err);
-    process.exit(1);
-});
+        // stderr của tiến trình con được build-engine.ts đọc lại để log lỗi thật khi spawn thất bại.
+        console.error((err && err.stack) || err);
+        process.exit(1);
+    });

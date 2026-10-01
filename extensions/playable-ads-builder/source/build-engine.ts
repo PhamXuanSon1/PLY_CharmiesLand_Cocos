@@ -1,5 +1,6 @@
 import * as path from 'path';
 import * as fs from 'fs-extra';
+import { spawn } from 'child_process';
 // @ts-ignore
 import AdmZip = require('adm-zip');
 import { CHANNEL, CHANNELS_REQUIRING_ZIP, CompressionType, IProductInfo } from './channels';
@@ -26,14 +27,114 @@ interface ICollectedFile {
     data: Buffer;
 }
 
-let sharpLib: any = null;
-try {
-    // sharp là native module: có thể build lệch ABI với Electron của Cocos Creator Editor.
-    // Nếu load lỗi, tự động fallback dùng file ảnh gốc (không nén) thay vì làm sập cả build.
-    sharpLib = require('sharp');
-    console.log('[playable-ads-builder] Đã load "sharp" thành công, sẽ nén ảnh khi build.');
-} catch (err) {
-    console.warn('[playable-ads-builder] Không load được "sharp", ảnh sẽ giữ nguyên (không nén webp).', err);
+/**
+ * Console riêng của Cocos Creator (asset-db/builder worker) không hiện được object Error truyền
+ * làm tham số phụ cho console.warn/error (chỉ hiện đúng chuỗi message đầu tiên) -> luôn nhét
+ * message + stack thẳng vào 1 chuỗi duy nhất để chắc chắn thấy được lỗi thật.
+ */
+function errorDetail(err: any): string {
+    if (err instanceof Error) {
+        return `${err.message}\n${err.stack || ''}`;
+    }
+    try {
+        return JSON.stringify(err);
+    } catch {
+        return String(err);
+    }
+}
+
+/**
+ * Ảnh nén bằng "sharp" NHƯNG chạy trong 1 TIẾN TRÌNH CON riêng (./compress-worker.js), không nén
+ * trực tiếp trong tiến trình hook build.
+ *
+ * Lý do: hook build của Cocos Creator luôn chạy trong 1 renderer process của Electron (xác nhận
+ * qua stack trace thật đi qua node:electron/js2c/renderer_init). "sharp" (native .node addon, phụ
+ * thuộc libvips-42.dll) load lỗi ERR_DLOPEN_FAILED ngay trong đúng tiến trình đó - libvips-42.dll
+ * xung đột phiên bản với các DLL Chromium/Electron đã nạp sẵn trong renderer. Lỗi này bắt được bằng
+ * try/catch bình thường (không phải crash cứng), nhưng vẫn khiến nén ảnh không chạy được tại chỗ.
+ * Giải pháp: spawn ra 1 tiến trình con hoàn toàn tách biệt (dùng chính process.execPath =
+ * CocosCreator.exe kèm biến môi trường ELECTRON_RUN_AS_NODE=1 để nó tự chạy như Node thuần, không
+ * cần cài Node riêng trên máy - đã test thực tế cách này chạy "sharp" bình thường, không lỗi DLL).
+ * Hook chỉ gửi danh sách đường dẫn ảnh cần nén cho tiến trình con qua 1 file JSON, đợi nó nén xong
+ * rồi đọc lại kết quả từ đĩa.
+ */
+interface IPendingImage {
+    id: number;
+    full: string;
+}
+
+interface IBatchCompressResultEntry {
+    compressed: boolean;
+    originalSize?: number;
+    compressedSize?: number;
+    error?: string;
+}
+
+async function compressImagesBatch(
+    images: IPendingImage[],
+    compression: ICompressionOptions,
+    tempDir: string,
+): Promise<Map<number, Buffer>> {
+    const compressedById = new Map<number, Buffer>();
+    if (images.length === 0) {
+        return compressedById;
+    }
+
+    const jobDir = path.join(tempDir, `_imgCompress_${Date.now()}_${Math.round(Math.random() * 1e6)}`);
+    await fs.ensureDir(jobDir);
+    const jobFile = path.join(jobDir, 'job.json');
+    const resultFile = path.join(jobDir, 'result.json');
+    const workerScript = path.join(__dirname, 'compress-worker.js');
+
+    try {
+        await fs.writeJson(jobFile, {
+            compression,
+            outDir: jobDir,
+            images: images.map(img => ({ id: img.id, input: img.full })),
+        });
+
+        await new Promise<void>((resolve, reject) => {
+            const child = spawn(process.execPath, [workerScript, jobFile, resultFile], {
+                env: { ...process.env, ELECTRON_RUN_AS_NODE: '1' },
+                windowsHide: true,
+            });
+            let stderr = '';
+            child.stderr?.on('data', chunk => { stderr += chunk.toString(); });
+            child.on('error', reject);
+            child.on('exit', code => {
+                if (code === 0) {
+                    resolve();
+                } else {
+                    reject(new Error(`Tiến trình con nén ảnh thoát với mã lỗi ${code}.${stderr ? `\n${stderr}` : ''}`));
+                }
+            });
+        });
+
+        const results: Record<number, IBatchCompressResultEntry> = await fs.readJson(resultFile);
+        for (const img of images) {
+            const entry = results[img.id];
+            if (!entry) {
+                continue;
+            }
+            if (entry.error) {
+                console.warn(`[playable-ads-builder] Nén ảnh thất bại, dùng ảnh gốc: ${img.full}. Chi tiết lỗi: ${entry.error}`);
+                continue;
+            }
+            if (entry.compressed) {
+                const outFile = path.join(jobDir, `${img.id}.webp`);
+                compressedById.set(img.id, await fs.readFile(outFile));
+                console.log(`[playable-ads-builder] Nén ảnh ${path.basename(img.full)}: ${entry.originalSize} -> ${entry.compressedSize} byte`);
+            } else {
+                console.log(`[playable-ads-builder] Nén ảnh ${path.basename(img.full)}: không nhỏ hơn bản gốc, giữ nguyên.`);
+            }
+        }
+    } catch (err) {
+        console.warn(`[playable-ads-builder] Nén ảnh (tiến trình con) thất bại, toàn bộ ảnh sẽ giữ nguyên không nén. Chi tiết lỗi: ${errorDetail(err)}`);
+    } finally {
+        await fs.remove(jobDir).catch(() => undefined);
+    }
+
+    return compressedById;
 }
 
 let ffmpegLib: any = null;
@@ -44,28 +145,7 @@ try {
         ffmpegLib.setFfmpegPath(ffmpegStaticPath);
     }
 } catch (err) {
-    console.warn('[playable-ads-builder] Không load được "fluent-ffmpeg"/"ffmpeg-static", audio sẽ giữ nguyên (không nén mp3).', err);
-}
-
-async function compressImage(filePath: string, compression: ICompressionOptions): Promise<Buffer> {
-    const raw = await fs.readFile(filePath);
-    if (!sharpLib) {
-        console.warn(`[playable-ads-builder] Bỏ qua nén ảnh (sharp chưa load được): ${filePath}`);
-        return raw;
-    }
-    if (compression.type === CompressionType.None) {
-        return raw;
-    }
-    try {
-        const options = compression.type === CompressionType.Lossless ? { lossless: true } : { quality: compression.quality };
-        const compressed: Buffer = await sharpLib(filePath).webp(options).toBuffer();
-        const smaller = compressed.length < raw.length;
-        console.log(`[playable-ads-builder] Nén ảnh ${path.basename(filePath)}: ${raw.length} -> ${compressed.length} byte${smaller ? '' : ' (không nhỏ hơn, giữ ảnh gốc)'}`);
-        return smaller ? compressed : raw;
-    } catch (err) {
-        console.warn(`[playable-ads-builder] Nén ảnh thất bại, dùng ảnh gốc: ${filePath}`, err);
-        return raw;
-    }
+    console.warn(`[playable-ads-builder] Không load được "fluent-ffmpeg"/"ffmpeg-static", audio sẽ giữ nguyên (không nén mp3). Chi tiết lỗi: ${errorDetail(err)}`);
 }
 
 async function compressAudio(filePath: string, tempDir: string, bitrate: number): Promise<{ relativeExt: string; data: Buffer }> {
@@ -80,18 +160,27 @@ async function compressAudio(filePath: string, tempDir: string, bitrate: number)
         });
         return { relativeExt: '.mp3', data: await fs.readFile(outFile) };
     } catch (err) {
-        console.warn(`[playable-ads-builder] Nén audio thất bại, dùng file gốc: ${filePath}`, err);
+        console.warn(`[playable-ads-builder] Nén audio thất bại, dùng file gốc: ${filePath}. Chi tiết lỗi: ${errorDetail(err)}`);
         return { relativeExt: path.extname(filePath), data: await fs.readFile(filePath) };
     }
 }
 
-/** Duyệt đệ quy thư mục web-mobile output, nén ảnh/audio theo cấu hình, trả về danh sách file sẽ đóng vào zip */
-async function walk(dir: string, root: string, compression: ICompressionOptions, audio: IAudioOptions, tempDir: string): Promise<ICollectedFile[]> {
+/** File thường (không phải ảnh) đã có data sẵn; file ảnh đang chờ nén hàng loạt (data gán sau ở collectWebMobileFiles) */
+type IWalkEntry = ICollectedFile | { path: string; pendingImageId: number };
+
+function isPendingImage(entry: IWalkEntry): entry is { path: string; pendingImageId: number } {
+    return (entry as any).pendingImageId !== undefined;
+}
+
+/** Duyệt đệ quy thư mục web-mobile output; ảnh chỉ được ĐĂNG KÝ vào `pendingImages` (nén hàng loạt
+ *  ở collectWebMobileFiles bằng 1 tiến trình con duy nhất), audio nén ngay tại đây (ffmpeg tự spawn
+ *  tiến trình riêng cho mỗi file nên không bị giới hạn renderer process). */
+async function walk(dir: string, root: string, audio: IAudioOptions, tempDir: string, pendingImages: IPendingImage[]): Promise<IWalkEntry[]> {
     const entries = await fs.readdir(dir);
     const results = await Promise.all(entries.map(async entry => {
         const full = path.join(dir, entry);
         if ((await fs.stat(full)).isDirectory()) {
-            return walk(full, root, compression, audio, tempDir);
+            return walk(full, root, audio, tempDir, pendingImages);
         }
         const ext = path.extname(full).toLowerCase();
         const relPath = path.relative(root, full).replace(/\\/g, '/');
@@ -99,20 +188,37 @@ async function walk(dir: string, root: string, compression: ICompressionOptions,
             return null;
         }
         if (FILE_EXTENSIONS.IMAGE.includes(ext)) {
-            return { path: relPath, data: await compressImage(full, compression) };
+            const id = pendingImages.length;
+            pendingImages.push({ id, full });
+            return { path: relPath, pendingImageId: id } as IWalkEntry;
         }
         if (FILE_EXTENSIONS.AUDIO.includes(ext) && audio.enabled) {
             const { relativeExt, data } = await compressAudio(full, path.join(tempDir, '_audioCompressed'), audio.bitrate);
             const newRelPath = relativeExt === ext ? relPath : `${relPath.slice(0, -ext.length)}${relativeExt}`;
-            return { path: newRelPath, data };
+            return { path: newRelPath, data } as IWalkEntry;
         }
-        return { path: relPath, data: await fs.readFile(full) };
+        return { path: relPath, data: await fs.readFile(full) } as IWalkEntry;
     }));
-    return results.flat().filter((f): f is ICollectedFile => f !== null);
+    return results.flat().filter((f): f is IWalkEntry => f !== null);
 }
 
 export async function collectWebMobileFiles(webMobileDir: string, compression: ICompressionOptions, audio: IAudioOptions, tempDir: string): Promise<ICollectedFile[]> {
-    return walk(webMobileDir, webMobileDir, compression, audio, tempDir);
+    const pendingImages: IPendingImage[] = [];
+    const entries = await walk(webMobileDir, webMobileDir, audio, tempDir, pendingImages);
+
+    const compressedById = compression.type === CompressionType.None
+        ? new Map<number, Buffer>()
+        : await compressImagesBatch(pendingImages, compression, tempDir);
+
+    const files: ICollectedFile[] = await Promise.all(entries.map(async entry => {
+        if (!isPendingImage(entry)) {
+            return entry;
+        }
+        const pending = pendingImages[entry.pendingImageId];
+        const compressed = compressedById.get(entry.pendingImageId);
+        return { path: entry.path, data: compressed || await fs.readFile(pending.full) };
+    }));
+    return files;
 }
 
 // --- base122: mã hoá gọn cho các kênh nhúng zip.js trực tiếp vào <script> inline (không zip riêng) ---
