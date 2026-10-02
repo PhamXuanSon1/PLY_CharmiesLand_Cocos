@@ -24,14 +24,13 @@ function escapeHtml(value) {
     return String(value).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 }
 
-function moveItem(index, delta, panel) {
-    const next = index + delta;
-    if (next < 0 || next >= itemList.length) return;
-    [itemList[index], itemList[next]] = [itemList[next], itemList[index]];
-    renderList(panel);
+function updateGridColumns(panel) {
+    const columns = Math.max(1, Math.floor(Number(panel.$.columns.value) || 1));
+    panel.$.list.style.setProperty('--grid-columns', columns);
 }
 
 async function renderList(panel) {
+    updateGridColumns(panel);
     const byUuid = new Map(itemData.map((item) => [item.uuid, item]));
     const rows = await Promise.all(itemList.map(async (uuid, index) => {
         const item = byUuid.get(uuid);
@@ -42,26 +41,33 @@ async function renderList(panel) {
             const normalized = file.replace(/\\/g, '/');
             src = 'file:///' + normalized.split('/').map((part, i) => i === 0 ? part : encodeURIComponent(part)).join('/');
         }
-        return '<div class="item" draggable="true" data-index="' + index + '">' +
+        const inactiveClass = item.active ? '' : ' inactive';
+        return '<div class="item' + inactiveClass + '" role="listitem" draggable="true" data-index="' + index + '">' +
+            '<span class="order">' + (index + 1) + '</span>' +
             '<img class="thumb"' + (src ? ' src="' + escapeHtml(src) + '"' : '') + ' alt="" onerror="this.classList.add(\'missing\')">' +
             '<div class="details"><strong>' + escapeHtml(item.name) + '</strong><span>' + (item.active ? 'Active' : 'Inactive') +
-            (item.spriteUuid ? '' : ' · No Sprite') + '</span></div><span class="order">' + (index + 1) + '</span>' +
-            '<button class="up" data-index="' + index + '" title="Move up">↑</button>' +
-            '<button class="down" data-index="' + index + '" title="Move down">↓</button></div>';
+            (item.spriteUuid ? '' : ' · No Sprite') + '</span></div>' +
+            '</div>';
     }));
     panel.$.list.innerHTML = rows.join('') || '<div class="empty">Node cha chưa có node con.</div>';
-    panel.$.list.querySelectorAll('.up').forEach((button) => button.addEventListener('click', () => moveItem(Number(button.dataset.index), -1, panel)));
-    panel.$.list.querySelectorAll('.down').forEach((button) => button.addEventListener('click', () => moveItem(Number(button.dataset.index), 1, panel)));
     panel.$.list.querySelectorAll('.item').forEach((row) => {
-        row.addEventListener('dragstart', (event) => event.dataTransfer.setData('text/plain', row.dataset.index));
-        row.addEventListener('dragover', (event) => event.preventDefault());
+        row.addEventListener('dragstart', (event) => {
+            event.dataTransfer.effectAllowed = 'move';
+            event.dataTransfer.setData('text/plain', row.dataset.index);
+        });
+        row.addEventListener('dragover', (event) => {
+            event.preventDefault();
+            event.dataTransfer.dropEffect = 'move';
+            row.classList.add('drag-over');
+        });
+        row.addEventListener('dragleave', () => row.classList.remove('drag-over'));
         row.addEventListener('drop', (event) => {
             event.preventDefault();
+            row.classList.remove('drag-over');
             const from = Number(event.dataTransfer.getData('text/plain'));
             const to = Number(row.dataset.index);
-            if (from === to || !Number.isInteger(from)) return;
-            const [moved] = itemList.splice(from, 1);
-            itemList.splice(to, 0, moved);
+            if (!Number.isInteger(from) || !Number.isInteger(to) || from < 0 || to < 0 || from >= itemList.length || to >= itemList.length || from === to) return;
+            [itemList[from], itemList[to]] = [itemList[to], itemList[from]];
             renderList(panel);
         });
     });
@@ -122,5 +128,6 @@ exports.methods = {
 exports.ready = function () {
     this.$.load.addEventListener('confirm', this.loadItems.bind(this));
     this.$.apply.addEventListener('confirm', this.apply.bind(this));
+    this.$.columns.addEventListener('input', () => updateGridColumns(this));
 };
 exports.close = function () {};

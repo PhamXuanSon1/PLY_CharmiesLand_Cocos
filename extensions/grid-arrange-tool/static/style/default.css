@@ -9,15 +9,18 @@ header h2 { margin: 0 0 4px; font-size: 14px; }
 .settings input[type="number"] { width: 64px; }
 .settings .check { grid-column: span 3; justify-content: flex-start; }
 .listhead { justify-content: space-between; }
-.list { display: flex; flex-direction: column; gap: 5px; overflow: auto; min-height: 100px; flex: 1; }
-.item { display: flex; align-items: center; gap: 8px; min-height: 54px; padding: 5px 7px; border: 1px solid var(--color-normal-border, #333); border-radius: 4px; background: var(--color-normal-fill-emphasis, #252525); }
+.list { display: grid; grid-template-columns: repeat(var(--grid-columns, 4), minmax(150px, 1fr)); grid-auto-rows: min-content; align-content: start; gap: 8px; overflow: auto; min-height: 100px; flex: 1; }
+.item { display: flex; align-items: center; gap: 12px; min-width: 0; min-height: 96px; padding: 8px 10px; border: 1px solid var(--color-normal-border, #333); border-radius: 5px; background: var(--color-normal-fill-emphasis, #252525); }
+.item:hover, .item.drag-over { border-color: var(--color-success-border, #78bb8a); }
 .item[draggable="true"] { cursor: grab; }
-.thumb { width: 44px; height: 44px; object-fit: contain; background: #171717; border-radius: 3px; }
+.item:active { cursor: grabbing; }
+.item.inactive { opacity: 0.58; }
+.thumb { flex: 0 0 80px; width: 80px; height: 80px; object-fit: contain; background: #171717; border-radius: 5px; }
 .thumb.missing { visibility: hidden; }
 .details { display: flex; flex: 1; flex-direction: column; min-width: 0; gap: 3px; }
-.details strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.details strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; }
 .details span, .order { color: var(--color-normal-contrast-weakest, #888); font-size: 10px; }
-.item button { min-width: 26px; height: 26px; }
+.order { flex: 0 0 22px; text-align: center; font-size: 12px; }
 .empty { padding: 16px; text-align: center; color: #888; }
 footer { align-items: flex-end; padding-top: 4px; }
 #status { max-height: 46px; overflow: auto; }

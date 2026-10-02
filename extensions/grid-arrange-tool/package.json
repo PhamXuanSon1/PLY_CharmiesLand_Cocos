@@ -11,7 +11,7 @@
       "title": "Grid Arrange Tool",
       "type": "dockable",
       "main": "./src/panels/default.js",
-      "size": { "min-width": 460, "min-height": 420, "width": 560, "height": 680 }
+      "size": { "min-width": 680, "min-height": 420, "width": 960, "height": 680 }
     }
   },
   "contributions": {
