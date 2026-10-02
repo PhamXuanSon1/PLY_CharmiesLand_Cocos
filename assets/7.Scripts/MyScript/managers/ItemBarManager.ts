@@ -87,6 +87,13 @@ export class ItemBarManager extends Component {
     @property({ tooltip: 'Cho phép phóng TO item nhỏ hơn khung. Tắt = chỉ thu nhỏ item to quá khung.', visible(this: ItemBarManager) { return this.fitToSlot; } })
     fitAllowUpscale = true;
 
+    @property({
+        tooltip: 'Phóng to tối đa bao nhiêu lần so với listScale (2.5 = to nhất x2.5). Item nhỏ sẽ dừng ở mức này thay vì phóng tới chạm khung. 0 = không giới hạn.',
+        range: [0, 10, 0.1],
+        visible(this: ItemBarManager) { return this.fitToSlot && this.fitAllowUpscale; },
+    })
+    fitMaxUpscale = 2.5;
+
     private spawning = false;
 
     // ======================================================== lifecycle
@@ -232,6 +239,7 @@ export class ItemBarManager extends Component {
         const frame = slotUt.getBoundingBoxToWorld();
         let k = Math.min(frame.width * this.fitFill / box.width, frame.height * this.fitFill / box.height);
         if (!this.fitAllowUpscale) k = Math.min(k, 1);
+        else if (this.fitMaxUpscale > 0) k = Math.min(k, this.fitMaxUpscale);
 
         const scale = new Vec3(listScale.x * k, listScale.y * k, listScale.z);
         node.setScale(scale);

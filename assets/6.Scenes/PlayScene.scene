@@ -3210,7 +3210,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -162.662,
+      "y": -104.293,
       "z": 0
     },
     "_lrot": {
@@ -3308,13 +3308,15 @@
     },
     "_enabled": true,
     "__prefab": null,
+    "mode": 1,
     "target": {
       "__id__": 85
     },
+    "camera": null,
     "followTarget": true,
     "paddingX": 40,
-    "paddingY": -10,
-    "radius": -1,
+    "paddingY": 10,
+    "radius": 0,
     "fillColor": {
       "__type__": "cc.Color",
       "r": 255,
@@ -3362,7 +3364,7 @@
     "_lpos": {
       "__type__": "cc.Vec3",
       "x": 0,
-      "y": -162.662,
+      "y": -104.293,
       "z": 0
     },
     "_lrot": {
@@ -4504,9 +4506,9 @@
     "_highlightThickness": 8,
     "_highlightColor": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 242,
+      "g": 166,
+      "b": 128,
       "a": 255
     },
     "_mainThickness": 14,
@@ -5438,6 +5440,7 @@
     "fitToSlot": true,
     "fitFill": 0.85,
     "fitAllowUpscale": true,
+    "fitMaxUpscale": 2,
     "_id": "16ZAoe3fdBm4CWAcUHE0Df"
   },
   {
