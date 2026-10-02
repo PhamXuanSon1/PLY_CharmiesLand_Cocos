@@ -157,7 +157,7 @@ exports.methods = {
         });
         this.$.apply.disabled = false;
         this.$.status.textContent = res && res.ok
-            ? 'Đã xếp ' + res.count + ' item thành lưới ' + res.columns + ' × ' + res.rows + ' và cập nhật ItemManager.itemList. Nhấn Ctrl+S để lưu scene.'
+            ? 'Đã xếp ' + res.count + ' item, cập nhật thứ tự node con và ItemManager.itemList. Nhấn Ctrl+S để lưu scene.'
             : ((res && res.error) || 'Apply thất bại.');
     },
 };

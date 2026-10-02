@@ -141,6 +141,8 @@ exports.methods = {
             node.setPosition(pos);
         });
 
+        items.forEach((node, index) => node.setSiblingIndex(index));
+
         const spawnOrder = items.concat(preservedItems);
         manager.itemList = manager.spawnFromLast ? spawnOrder.slice().reverse() : spawnOrder;
         try { Editor.Message.send('scene', 'snapshot'); } catch (e) { /* scene may be closing */ }
