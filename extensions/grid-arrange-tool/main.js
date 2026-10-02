@@ -43,7 +43,8 @@ exports.methods = {
     async thumbnailPath(uuid) {
         if (!uuid) return '';
         try {
-            const info = await Editor.Message.request('asset-db', 'query-asset-info', uuid);
+            const baseUuid = String(uuid).split('@')[0];
+            const info = await Editor.Message.request('asset-db', 'query-asset-info', baseUuid);
             if (!info) return '';
             if (info.file) return path.resolve(info.file);
             if (info.url && info.url.startsWith('db://assets')) {
