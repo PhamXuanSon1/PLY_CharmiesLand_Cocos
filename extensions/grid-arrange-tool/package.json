@@ -1,0 +1,27 @@
+{
+  "package_version": 2,
+  "name": "grid-arrange-tool",
+  "version": "1.0.0",
+  "description": "Arrange scene items in a grid and edit ItemManager spawn order.",
+  "author": "PLY",
+  "editor": ">=3.7.0",
+  "main": "./main.js",
+  "panels": {
+    "default": {
+      "title": "Grid Arrange Tool",
+      "type": "dockable",
+      "main": "./src/panels/default.js",
+      "size": { "min-width": 460, "min-height": 420, "width": 560, "height": 680 }
+    }
+  },
+  "contributions": {
+    "menu": [{ "path": "Tool", "label": "Grid Arrange Tool", "message": "open-panel" }],
+    "scene": { "script": "./src/scene.js" },
+    "messages": {
+      "open-panel": { "methods": ["openPanel"] },
+      "load-items": { "methods": ["loadItems"] },
+      "apply-layout": { "methods": ["applyLayout"] },
+      "thumbnail-path": { "methods": ["thumbnailPath"] }
+    }
+  }
+}
