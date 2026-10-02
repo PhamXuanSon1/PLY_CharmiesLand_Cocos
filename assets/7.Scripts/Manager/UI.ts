@@ -66,8 +66,8 @@ export class UI extends Component {
     }
 
     onLose() {
-        if(this.endcard.active || this.winCard.active) return;  
-        this.offEnds.forEach(button => button.active = false);
+        if(this.endcard.active || this.winCard.active) return;
+        this.offEnds.forEach(button => { if (button?.isValid) button.active = false; });
         this.offHand();
         this.endcard.active = true;
         this.bindingToStore();       
@@ -76,8 +76,8 @@ export class UI extends Component {
 
 
     onWin() {
-        if(this.endcard.active || this.winCard.active) return; 
-        this.offEnds.forEach(button => button.active = false);
+        if(this.endcard.active || this.winCard.active) return;
+        this.offEnds.forEach(button => { if (button?.isValid) button.active = false; });
         this.offHand();
         this.winCard.active = true;
         this.bindingToStore();  
@@ -138,8 +138,12 @@ export class UI extends Component {
         }
 
 
+        // ⚠ Bỏ qua ô trống (null) trong binds: 1 ô null làm bind() văng lỗi
+        //   "reading 'position'" và các binding phía sau (Left/Right...) không chạy.
         this.bindings.forEach(bind => {
+            if (!bind) return;
             bind.binds.forEach(item => {
+                if (!item || !item.isValid || !item.parent) return;
                 item.position = item.position.clone();
                 let pos = item.getWorldPosition();
                 switch(bind.type) {

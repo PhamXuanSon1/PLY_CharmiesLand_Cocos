@@ -348,9 +348,10 @@ export class ItemController extends Component implements IPointerHandler {
         this.hideTargetShadow();
 
         if (this.currentHolderSlot) {
-            const returnPos = this.currentHolderSlot.originPosition
+            const returnPos = (this.currentHolderSlot.originPosition
                 ? this.currentHolderSlot.originPosition.worldPosition.clone()
-                : this.currentHolderSlot.node.worldPosition.clone();
+                : this.currentHolderSlot.node.worldPosition.clone())
+                .add(this.currentHolderSlot.fitOffset);   // chỗ đã căn giữa khi fit vào slot
 
             // ⚠ killAll dừng cả tween scale vừa tạo trong stopDragAnimation -> tween lại sau killAll
             TweenUtil.killAll(this.node);

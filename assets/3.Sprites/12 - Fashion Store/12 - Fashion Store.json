@@ -13,7 +13,7 @@
   "assetMap": {},
   "nodes": [
     {
-      "path": "Room Base (base_10)",
+      "path": "base_10",
       "parentPath": null,
       "active": true,
       "pos": [
@@ -32,7 +32,7 @@
         1
       ],
       "sprite": {
-        "key": "Room Base (base_10)",
+        "key": "base_10",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -75,7 +75,7 @@
       ]
     },
     {
-      "path": "Stickers/S1-G1-01 1_3 (order 1)",
+      "path": "Stickers/1_3",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -94,7 +94,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G1-01 1_3 (order 1)",
+        "key": "1_3",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -117,7 +117,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G1-02 36_7 (order 1)",
+      "path": "Stickers/36_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -136,7 +136,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G1-02 36_7 (order 1)",
+        "key": "36_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -159,7 +159,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G7-03 33_17 (order 1)",
+      "path": "Stickers/33_19",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -178,7 +178,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G7-03 33_17 (order 1)",
+        "key": "33_19",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -201,7 +201,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G2-01 2_6 (order 2)",
+      "path": "Stickers/2_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -220,7 +220,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G2-01 2_6 (order 2)",
+        "key": "2_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -243,7 +243,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G2-02 4_7 (order 2)",
+      "path": "Stickers/4_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -262,7 +262,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G2-02 4_7 (order 2)",
+        "key": "4_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -285,7 +285,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G2-03 8_5 (order 2)",
+      "path": "Stickers/8_5",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -304,7 +304,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G2-03 8_5 (order 2)",
+        "key": "8_5",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -327,7 +327,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G2-04 37_9 (order 2)",
+      "path": "Stickers/37_9",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -346,7 +346,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G2-04 37_9 (order 2)",
+        "key": "37_9",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -369,7 +369,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G5-02 9_18 (order 2)",
+      "path": "Stickers/9_18",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -388,7 +388,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G5-02 9_18 (order 2)",
+        "key": "9_18",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -411,7 +411,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G3-01 3_0 (order 3)",
+      "path": "Stickers/3_0",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -430,7 +430,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G3-01 3_0 (order 3)",
+        "key": "3_0",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -453,7 +453,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G3-02 5_17 (order 3)",
+      "path": "Stickers/5_18",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -472,7 +472,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G3-02 5_17 (order 3)",
+        "key": "5_18",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -495,7 +495,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G3-03 10_16 (order 3)",
+      "path": "Stickers/10_16",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -514,7 +514,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G3-03 10_16 (order 3)",
+        "key": "10_16",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -537,7 +537,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G3-04 38_7 (order 3)",
+      "path": "Stickers/38_8",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -556,7 +556,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G3-04 38_7 (order 3)",
+        "key": "38_8",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -579,7 +579,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G6-02 18_9 (order 3)",
+      "path": "Stickers/18_9",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -598,7 +598,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G6-02 18_9 (order 3)",
+        "key": "18_9",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -621,7 +621,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G6-03 15_12 (order 3)",
+      "path": "Stickers/15_13",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -640,7 +640,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G6-03 15_12 (order 3)",
+        "key": "15_13",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -663,7 +663,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G4-01 7_17 (order 4)",
+      "path": "Stickers/7_17",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -682,7 +682,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G4-01 7_17 (order 4)",
+        "key": "7_17",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -705,7 +705,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G4-02 6_14 (order 4)",
+      "path": "Stickers/6_15",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -724,7 +724,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G4-02 6_14 (order 4)",
+        "key": "6_15",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -747,7 +747,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G4-03 11_6 (order 4)",
+      "path": "Stickers/11_6",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -766,7 +766,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G4-03 11_6 (order 4)",
+        "key": "11_6",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -789,7 +789,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G7-02 15_12 (order 4)",
+      "path": "Stickers/15_13_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -808,7 +808,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G6-03 15_12 (order 3)",
+        "key": "15_13",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -831,7 +831,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G7-03 19_6 (order 4)",
+      "path": "Stickers/19_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -850,7 +850,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G7-03 19_6 (order 4)",
+        "key": "19_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -873,7 +873,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G5-01 12_2 (order 5)",
+      "path": "Stickers/12_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -892,7 +892,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G5-01 12_2 (order 5)",
+        "key": "12_2",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -915,7 +915,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G8-02 17_8 (order 5)",
+      "path": "Stickers/17_8",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -934,7 +934,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G8-02 17_8 (order 5)",
+        "key": "17_8",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -957,7 +957,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G6-01 13_1 (order 6)",
+      "path": "Stickers/13_1",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -976,7 +976,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G6-01 13_1 (order 6)",
+        "key": "13_1",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -999,7 +999,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G10-01 20_1 (order 6)",
+      "path": "Stickers/20_1",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1018,7 +1018,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G10-01 20_1 (order 6)",
+        "key": "20_1",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1041,7 +1041,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G7-01 14_8 (order 7)",
+      "path": "Stickers/14_8",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1060,7 +1060,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G7-01 14_8 (order 7)",
+        "key": "14_8",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1083,7 +1083,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G8-01 21_19 (order 8)",
+      "path": "Stickers/21_20",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1102,7 +1102,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G8-01 21_19 (order 8)",
+        "key": "21_20",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1125,7 +1125,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G8-03 22_4 (order 8)",
+      "path": "Stickers/22_4",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1144,7 +1144,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G8-03 22_4 (order 8)",
+        "key": "22_4",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1167,7 +1167,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G9-01 23_11 (order 9)",
+      "path": "Stickers/23_11",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1186,7 +1186,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G9-01 23_11 (order 9)",
+        "key": "23_11",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1209,7 +1209,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G9-02 23_11 (order 9)",
+      "path": "Stickers/23_11_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1228,7 +1228,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G9-01 23_11 (order 9)",
+        "key": "23_11",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1251,7 +1251,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G9-03 23_11 (order 9)",
+      "path": "Stickers/23_11_3",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1270,7 +1270,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G9-01 23_11 (order 9)",
+        "key": "23_11",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1293,7 +1293,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G9-04 29_7 (order 9)",
+      "path": "Stickers/29_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1312,7 +1312,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G9-04 29_7 (order 9)",
+        "key": "29_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1335,7 +1335,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G7-02 32_12 (order 9)",
+      "path": "Stickers/32_12",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1354,7 +1354,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G7-02 32_12 (order 9)",
+        "key": "32_12",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1377,7 +1377,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G10-02 26_5 (order 10) [anim]",
+      "path": "Stickers/26_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1396,7 +1396,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G10-02 26_5 (order 10) [anim]",
+        "key": "26_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1419,7 +1419,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G10-03 27_12 (order 10) [anim]",
+      "path": "Stickers/27_12",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1438,7 +1438,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G10-03 27_12 (order 10) [anim]",
+        "key": "27_12",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1461,7 +1461,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G10-04 30_18 (order 10)",
+      "path": "Stickers/30_18",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1480,7 +1480,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G10-04 30_18 (order 10)",
+        "key": "30_18",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1503,7 +1503,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G11-01 28_15 (order 10) [anim]",
+      "path": "Stickers/28_15",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1522,7 +1522,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G11-01 28_15 (order 10) [anim]",
+        "key": "28_15",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1545,7 +1545,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G9-01 34_6 (order 10)",
+      "path": "Stickers/34_6",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1564,7 +1564,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G9-01 34_6 (order 10)",
+        "key": "34_6",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1587,7 +1587,7 @@
       }
     },
     {
-      "path": "Stickers/S1-G11-02 31_7 (order 11)",
+      "path": "Stickers/31_8",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1606,7 +1606,7 @@
         1
       ],
       "sprite": {
-        "key": "S1-G11-02 31_7 (order 11)",
+        "key": "31_8",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1629,7 +1629,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G1-01 39_9 (order 12)",
+      "path": "Stickers/39_10",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1648,7 +1648,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G1-01 39_9 (order 12)",
+        "key": "39_10",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1671,7 +1671,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G1-02 40_18 (order 12)",
+      "path": "Stickers/40_18",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1690,7 +1690,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G1-02 40_18 (order 12)",
+        "key": "40_18",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1713,7 +1713,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G1-01 41_6 (order 12)",
+      "path": "Stickers/41_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1732,7 +1732,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G1-01 41_6 (order 12)",
+        "key": "41_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1755,7 +1755,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G1-02 74_3 (order 12) [anim]",
+      "path": "Stickers/74_6",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1774,7 +1774,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G1-02 74_3 (order 12) [anim]",
+        "key": "74_6",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1797,7 +1797,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G10-01 35_19 (order 12)",
+      "path": "Stickers/35_19",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1816,7 +1816,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G10-01 35_19 (order 12)",
+        "key": "35_19",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1839,7 +1839,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G2-01 42_12 (order 13)",
+      "path": "Stickers/42_13",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1858,7 +1858,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G2-01 42_12 (order 13)",
+        "key": "42_13",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1881,7 +1881,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G2-02 47_5 (order 13)",
+      "path": "Stickers/47_6",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1900,7 +1900,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G2-02 47_5 (order 13)",
+        "key": "47_6",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1923,7 +1923,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G2-03 59_15 (order 13)",
+      "path": "Stickers/59_15",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1942,7 +1942,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G2-03 59_15 (order 13)",
+        "key": "59_15",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -1965,7 +1965,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G6-01 63_16 (order 13)",
+      "path": "Stickers/63_18",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -1984,7 +1984,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G6-01 63_16 (order 13)",
+        "key": "63_18",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2007,7 +2007,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G1-03 32_12 (order 13)",
+      "path": "Stickers/32_12_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2026,7 +2026,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G7-02 32_12 (order 9)",
+        "key": "32_12",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2049,7 +2049,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G2-01 51_13 (order 13)",
+      "path": "Stickers/51_14",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2068,7 +2068,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G2-01 51_13 (order 13)",
+        "key": "51_14",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2091,7 +2091,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G2-02 55_8 (order 13)",
+      "path": "Stickers/55_9",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2110,7 +2110,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G2-02 55_8 (order 13)",
+        "key": "55_9",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2133,7 +2133,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G3-01 48_16 (order 14)",
+      "path": "Stickers/48_16",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2152,7 +2152,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G3-01 48_16 (order 14)",
+        "key": "48_16",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2175,7 +2175,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G3-02 64_0 (order 14)",
+      "path": "Stickers/64_0",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2194,7 +2194,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G3-02 64_0 (order 14)",
+        "key": "64_0",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2217,7 +2217,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G3-03 43_0 (order 14)",
+      "path": "Stickers/43_1",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2236,7 +2236,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G3-03 43_0 (order 14)",
+        "key": "43_1",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2259,7 +2259,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G4-02 60_0 (order 14)",
+      "path": "Stickers/60_0",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2278,7 +2278,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G4-02 60_0 (order 14)",
+        "key": "60_0",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2301,7 +2301,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G3-01 52_3 (order 14)",
+      "path": "Stickers/52_3",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2320,7 +2320,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G3-01 52_3 (order 14)",
+        "key": "52_3",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2343,7 +2343,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G3-02 56_2 (order 14)",
+      "path": "Stickers/56_3",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2362,7 +2362,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G3-02 56_2 (order 14)",
+        "key": "56_3",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2385,7 +2385,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G3-03 72_17 (order 14)",
+      "path": "Stickers/72_17",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2404,7 +2404,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G3-03 72_17 (order 14)",
+        "key": "72_17",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2427,7 +2427,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G4-02 57_10 (order 14)",
+      "path": "Stickers/57_11",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2446,7 +2446,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G4-02 57_10 (order 14)",
+        "key": "57_11",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2469,7 +2469,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G5-02 58_12 (order 14)",
+      "path": "Stickers/58_13",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2488,7 +2488,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G5-02 58_12 (order 14)",
+        "key": "58_13",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2511,7 +2511,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G4-01 44_16 (order 15)",
+      "path": "Stickers/44_17",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2530,7 +2530,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G4-01 44_16 (order 15)",
+        "key": "44_17",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2553,7 +2553,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G4-03 49_4 (order 15)",
+      "path": "Stickers/49_4",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2572,7 +2572,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G4-03 49_4 (order 15)",
+        "key": "49_4",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2595,7 +2595,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G4-04 66 (order 15)",
+      "path": "Stickers/66",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2614,7 +2614,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G4-04 66 (order 15)",
+        "key": "66",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2637,7 +2637,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G4-01 53_15 (order 15)",
+      "path": "Stickers/53_15",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2656,7 +2656,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G4-01 53_15 (order 15)",
+        "key": "53_15",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2679,7 +2679,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G6-01 69_14 (order 15)",
+      "path": "Stickers/69_16",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2698,7 +2698,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G6-01 69_14 (order 15)",
+        "key": "69_16",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2721,7 +2721,7 @@
       }
     },
     {
-      "path": "Stickers/S4-G1-02 73_3 (order 15)",
+      "path": "Stickers/73_3",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2740,7 +2740,7 @@
         1
       ],
       "sprite": {
-        "key": "S4-G1-02 73_3 (order 15)",
+        "key": "73_3",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2763,7 +2763,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G5-01 45_9 (order 16)",
+      "path": "Stickers/45_9",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2782,7 +2782,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G5-01 45_9 (order 16)",
+        "key": "45_9",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2805,7 +2805,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G5-02 50 (order 16)",
+      "path": "Stickers/50",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2824,7 +2824,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G5-02 50 (order 16)",
+        "key": "50",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2847,7 +2847,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G5-03 61_1 (order 16)",
+      "path": "Stickers/61_1",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2866,7 +2866,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G5-03 61_1 (order 16)",
+        "key": "61_1",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2889,7 +2889,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G6-02 64_0 (order 16)",
+      "path": "Stickers/64_0_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2908,7 +2908,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G3-02 64_0 (order 14)",
+        "key": "64_0",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2931,7 +2931,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G5-01 54_12 (order 16)",
+      "path": "Stickers/54_13",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2950,7 +2950,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G5-01 54_12 (order 16)",
+        "key": "54_13",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -2973,7 +2973,7 @@
       }
     },
     {
-      "path": "Stickers/S2-G6-03 46_7 (order 17)",
+      "path": "Stickers/46_7",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -2992,7 +2992,7 @@
         1
       ],
       "sprite": {
-        "key": "S2-G6-03 46_7 (order 17)",
+        "key": "46_7",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3015,7 +3015,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G6-02 68_0 (order 17)",
+      "path": "Stickers/68_0",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3034,7 +3034,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G6-02 68_0 (order 17)",
+        "key": "68_0",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3057,7 +3057,7 @@
       }
     },
     {
-      "path": "Stickers/S4-G1-01 62_13 (order 17)",
+      "path": "Stickers/62_13",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3076,7 +3076,7 @@
         1
       ],
       "sprite": {
-        "key": "S4-G1-01 62_13 (order 17)",
+        "key": "62_13",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3099,7 +3099,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G7-01 70_9 (order 18)",
+      "path": "Stickers/70_10",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3118,7 +3118,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G7-01 70_9 (order 18)",
+        "key": "70_10",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3141,7 +3141,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G8-01 77_14 (order 18)",
+      "path": "Stickers/77_16",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3160,7 +3160,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G8-01 77_14 (order 18)",
+        "key": "77_16",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3183,7 +3183,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G8-02 77_14 (order 18)",
+      "path": "Stickers/77_16_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3202,7 +3202,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G8-01 77_14 (order 18)",
+        "key": "77_16",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3225,7 +3225,7 @@
       }
     },
     {
-      "path": "Stickers/S4-G1-03 71_17 (order 18) [anim]",
+      "path": "Stickers/71_19",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3244,7 +3244,7 @@
         1
       ],
       "sprite": {
-        "key": "S4-G1-03 71_17 (order 18) [anim]",
+        "key": "71_19",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3267,7 +3267,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G9-02 78_12 (order 19)",
+      "path": "Stickers/78_15",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3286,7 +3286,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G9-02 78_12 (order 19)",
+        "key": "78_15",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3309,7 +3309,7 @@
       }
     },
     {
-      "path": "Stickers/S4-G1-04 75_5 (order 19) [anim]",
+      "path": "Stickers/75_6",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3328,7 +3328,7 @@
         1
       ],
       "sprite": {
-        "key": "S4-G1-04 75_5 (order 19) [anim]",
+        "key": "75_6",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3351,7 +3351,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G10-02 79_10 (order 20)",
+      "path": "Stickers/79_10",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3370,7 +3370,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G10-02 79_10 (order 20)",
+        "key": "79_10",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3393,7 +3393,7 @@
       }
     },
     {
-      "path": "Stickers/S4-G2-01 76_2 (order 20) [anim]",
+      "path": "Stickers/76_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3412,7 +3412,7 @@
         1
       ],
       "sprite": {
-        "key": "S4-G2-01 76_2 (order 20) [anim]",
+        "key": "76_2",
         "guid": "",
         "ppu": 100,
         "nativeSize": [
@@ -3435,7 +3435,7 @@
       }
     },
     {
-      "path": "Stickers/S3-G11-01 78_12 (order 21)",
+      "path": "Stickers/78_15_2",
       "parentPath": "Stickers",
       "active": true,
       "pos": [
@@ -3454,7 +3454,7 @@
         1
       ],
       "sprite": {
-        "key": "S3-G9-02 78_12 (order 19)",
+        "key": "78_15",
         "guid": "",
         "ppu": 100,
         "nativeSize": [

@@ -2,7 +2,7 @@
   "ver": "1.0.27",
   "importer": "image",
   "imported": true,
-  "uuid": "f1156284-ea6f-4d18-9b94-8e84e5bd8be8",
+  "uuid": "d350d773-0ff6-4bfc-8e5d-6acc1cf40f62",
   "files": [
     ".json",
     ".png"
@@ -10,14 +10,14 @@
   "subMetas": {
     "6c48a": {
       "importer": "texture",
-      "uuid": "f1156284-ea6f-4d18-9b94-8e84e5bd8be8@6c48a",
+      "uuid": "d350d773-0ff6-4bfc-8e5d-6acc1cf40f62@6c48a",
       "displayName": "12 - Fashion Store",
       "id": "6c48a",
       "name": "texture",
       "userData": {
         "wrapModeS": "clamp-to-edge",
         "wrapModeT": "clamp-to-edge",
-        "imageUuidOrDatabaseUri": "f1156284-ea6f-4d18-9b94-8e84e5bd8be8",
+        "imageUuidOrDatabaseUri": "d350d773-0ff6-4bfc-8e5d-6acc1cf40f62",
         "isUuid": true,
         "visible": false,
         "minfilter": "linear",
@@ -34,7 +34,7 @@
     },
     "f9941": {
       "importer": "sprite-frame",
-      "uuid": "f1156284-ea6f-4d18-9b94-8e84e5bd8be8@f9941",
+      "uuid": "d350d773-0ff6-4bfc-8e5d-6acc1cf40f62@f9941",
       "displayName": "12 - Fashion Store",
       "id": "f9941",
       "name": "spriteFrame",
@@ -113,7 +113,7 @@
           ]
         },
         "isUuid": true,
-        "imageUuidOrDatabaseUri": "f1156284-ea6f-4d18-9b94-8e84e5bd8be8@6c48a",
+        "imageUuidOrDatabaseUri": "d350d773-0ff6-4bfc-8e5d-6acc1cf40f62@6c48a",
         "atlasUuid": "",
         "trimType": "auto"
       },
@@ -129,6 +129,10 @@
     "type": "sprite-frame",
     "fixAlphaTransparencyArtifacts": false,
     "hasAlpha": true,
-    "redirect": "f1156284-ea6f-4d18-9b94-8e84e5bd8be8@6c48a"
+    "redirect": "d350d773-0ff6-4bfc-8e5d-6acc1cf40f62@6c48a",
+    "compressSettings": {
+      "useCompressTexture": true,
+      "presetId": "03/m4ybQVOJ7SPOhieTjrl"
+    }
   }
 }

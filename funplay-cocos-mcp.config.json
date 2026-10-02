@@ -8,6 +8,12 @@
       "url": "http://127.0.0.1:28159/",
       "configPath": "C:\\Users\\Admin\\.claude.json",
       "projectIdentity": "347d51bfd11ba2db0a7140ad"
+    },
+    "codex": {
+      "serverName": "cocos-ply-charmies-347d51",
+      "url": "http://127.0.0.1:28159/",
+      "configPath": "C:\\Users\\Admin\\.codex\\config.toml",
+      "projectIdentity": "347d51bfd11ba2db0a7140ad"
     }
   },
   "toolProfile": "core",
@@ -20,7 +26,7 @@
   "executeJavascriptSafetyChecks": true,
   "autostart": true,
   "maxInteractionLogEntries": 50,
-  "lastClientTargetId": "claude_code",
+  "lastClientTargetId": "codex",
   "activeToolProfileName": "",
   "savedToolProfiles": [],
   "language": "auto"

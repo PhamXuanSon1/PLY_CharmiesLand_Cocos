@@ -59,6 +59,9 @@ export class HolderSlot extends Component {
     @property({ type: Color, tooltip: 'Màu sticker.' })
     stickerColor: Color = new Color(255, 255, 255, 255);
 
+    /** Độ lệch world của item so với originPosition sau khi ItemBarManager fit + căn giữa. */
+    readonly fitOffset = new Vec3();
+
     private bobbing: Tween<Node> | null = null;
     private sticker: Node | null = null;
 

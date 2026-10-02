@@ -11,10 +11,11 @@
  * Thứ tự item lấy theo ItemManager.getCurrentItem() (itemList / spawnFromLast).
  */
 
-import { _decorator, Component, Node, Vec3, Enum, tween } from 'cc';
+import { _decorator, Component, Node, Vec3, Enum, tween, UITransform } from 'cc';
 import { ItemManager } from './ItemManager';
 import { ItemController } from '../item/ItemController';
 import { ItemMovement } from '../item/ItemMovement';
+import { ItemGraphic } from '../item/ItemGraphic';
 import { HolderSlot } from '../utils/HolderSlot';
 import { TweenUtil } from '../core/TweenUtil';
 
@@ -71,6 +72,20 @@ export class ItemBarManager extends Component {
 
     @property({ tooltip: 'Thời gian co từ overshoot về listScale (giây).' })
     popSettleDuration = 0.15;
+
+    // ---- fit item vào khung slot ----
+    @property({ tooltip: 'Co giãn item cho vừa Content Size (UITransform) của slot và căn giữa slot. Tắt = dùng listScale như cũ.' })
+    fitToSlot = true;
+
+    @property({
+        tooltip: 'Item chiếm bao nhiêu % khung slot (0.85 = chừa 15% lề). Tính theo cạnh bị chạm trước.',
+        range: [0.1, 1.5, 0.01], slide: true,
+        visible(this: ItemBarManager) { return this.fitToSlot; },
+    })
+    fitFill = 0.85;
+
+    @property({ tooltip: 'Cho phép phóng TO item nhỏ hơn khung. Tắt = chỉ thu nhỏ item to quá khung.', visible(this: ItemBarManager) { return this.fitToSlot; } })
+    fitAllowUpscale = true;
 
     private spawning = false;
 
@@ -167,11 +182,18 @@ export class ItemBarManager extends Component {
         const origin = slot.originPosition ?? slot.node;
         node.setWorldPosition(origin.worldPosition.clone());
         if (g) node.eulerAngles = g.listRotation.clone();
+        slot.fitOffset.set(0, 0, 0);
+
+        node.setScale(listScale);
+        node.active = true;
+
+        // Co giãn cho vừa khung slot + căn giữa (đo bounds ở listScale, node phải active)
+        let restScale = listScale;
+        if (this.fitToSlot && g) restScale = this.fitItemToSlot(node, g, slot, listScale) ?? listScale;
 
         // Chốt scale gốc TRƯỚC khi setScale(0) (xem ghi chú trong ItemMovement.captureOriginal)
-        node.setScale(listScale);
+        node.setScale(restScale);
         node.getComponent(ItemMovement)?.captureOriginal();
-        node.active = true;
 
         // 1. Gán vào holder trước: reparent, dựng sticker (đo bounds ở scale thật), bobbing
         if (item) item.currentHolderSlot = slot;
@@ -181,13 +203,49 @@ export class ItemBarManager extends Component {
         if (this.showShadowInSlot && item) item.showTargetShadow();
 
         // 2. Rồi mới chạy anim scale 0 -> x1.2 -> x1 (sticker là con của item nên scale theo)
-        const over = new Vec3(listScale.x * this.popOvershoot, listScale.y * this.popOvershoot, listScale.z);
+        const over = new Vec3(restScale.x * this.popOvershoot, restScale.y * this.popOvershoot, restScale.z);
         node.setScale(0, 0, 0);
         tween(node)
             .to(this.popDuration, { scale: over }, { easing: 'quadOut' })
-            .to(this.popSettleDuration, { scale: listScale }, { easing: 'quadIn' })
+            .to(this.popSettleDuration, { scale: restScale }, { easing: 'quadIn' })
             .call(() => onDone?.())
             .start();
+    }
+
+    /**
+     * Scale item sao cho bounds (gộp mọi UITransform, đã xoay listRotation) vừa
+     * Content Size của slot * fitFill, giữ tỉ lệ, rồi dời item để TÂM bounds trùng tâm khung slot.
+     * Lưu độ lệch so với originPosition vào slot.fitOffset để thả hụt bay về đúng chỗ.
+     * @returns scale mới, null nếu slot không có UITransform / item không đo được
+     */
+    private fitItemToSlot(node: Node, g: ItemGraphic, slot: HolderSlot, listScale: Vec3): Vec3 | null {
+        const slotUt = slot.node.getComponent(UITransform);
+        if (!slotUt) return null;
+
+        // Đổi cha vào slot TRƯỚC khi đo: scale local dưới đây là scale trong slot (đúng cái
+        // mà anim pop / captureOriginal / snapFailed dùng). Cha cũ (phòng) có thể scale khác.
+        node.setParent(slot.node, true);
+        node.setScale(listScale);
+        const box = g.getCombinedBounds();
+        if (!box || box.width <= 1e-3 || box.height <= 1e-3) return null;
+
+        const frame = slotUt.getBoundingBoxToWorld();
+        let k = Math.min(frame.width * this.fitFill / box.width, frame.height * this.fitFill / box.height);
+        if (!this.fitAllowUpscale) k = Math.min(k, 1);
+
+        const scale = new Vec3(listScale.x * k, listScale.y * k, listScale.z);
+        node.setScale(scale);
+
+        // Bounds co quanh node theo cùng hệ số k -> tính lại tâm rồi dời cho khớp tâm khung
+        const fitted = g.getCombinedBounds() ?? box;
+        const pos = node.worldPosition.clone();
+        pos.x += frame.center.x - fitted.center.x;
+        pos.y += frame.center.y - fitted.center.y;
+        node.setWorldPosition(pos);
+
+        const origin = (slot.originPosition ?? slot.node).worldPosition;
+        slot.fitOffset.set(pos.x - origin.x, pos.y - origin.y, 0);
+        return scale;
     }
 
     // ======================================================== hook từ ItemController

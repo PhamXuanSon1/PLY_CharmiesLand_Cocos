@@ -1,8 +1,0 @@
-BG-OceanHouse.png
-size:785,235
-filter:Linear,Linear
-pma:true
-OceanHouse/ca1
-bounds:517,2,266,231
-OceanHouse/ca2
-bounds:2,15,513,218
