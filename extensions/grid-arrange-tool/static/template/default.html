@@ -14,7 +14,13 @@
     <label class="check"><input id="centerGrid" type="checkbox" checked> Căn giữa lưới tại Start</label>
     <label class="check"><input id="skipInactive" type="checkbox"> Bỏ qua node inactive khi xếp</label>
   </section>
-  <div class="listhead"><strong>Xem trước lưới · Thứ tự spawn</strong><span class="hint">Kéo thả thẻ để đổi vị trí</span></div>
+  <div class="listhead">
+    <strong>Xem trước lưới · Thứ tự spawn</strong>
+    <div class="list-tools">
+      <span class="hint">Kéo thả thẻ để đổi vị trí</span>
+      <div class="search-controls"><input id="searchInput" type="search" placeholder="Tên item..." aria-label="Tìm item"><ui-button id="searchButton">Tìm</ui-button></div>
+    </div>
+  </div>
   <div id="list" class="list" role="list"><div class="empty">Chọn node cha rồi bấm Tải.</div></div>
   <footer><span id="status" class="hint grow"></span><ui-button id="apply" type="primary" disabled>Apply / Cập nhật ItemManager</ui-button></footer>
 </div>

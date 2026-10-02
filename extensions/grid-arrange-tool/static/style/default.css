@@ -8,10 +8,14 @@ header h2 { margin: 0 0 4px; font-size: 14px; }
 .settings label { display: flex; align-items: center; justify-content: space-between; gap: 5px; }
 .settings input[type="number"] { width: 64px; }
 .settings .check { grid-column: span 3; justify-content: flex-start; }
-.listhead { justify-content: space-between; }
+.listhead { justify-content: space-between; flex-wrap: wrap; }
+.list-tools, .search-controls { display: flex; align-items: center; gap: 8px; }
+.search-controls input { width: 180px; }
 .list { display: grid; grid-template-columns: repeat(var(--grid-columns, 4), minmax(150px, 1fr)); grid-auto-rows: min-content; align-content: start; gap: 8px; overflow: auto; min-height: 100px; flex: 1; }
 .item { display: flex; align-items: center; gap: 12px; min-width: 0; min-height: 96px; padding: 8px 10px; border: 1px solid var(--color-normal-border, #333); border-radius: 5px; background: var(--color-normal-fill-emphasis, #252525); }
 .item:hover, .item.drag-over { border-color: var(--color-success-border, #78bb8a); }
+.item.search-match { border-color: #c79a4b; }
+.item.search-current { border-color: #8ccd9c; box-shadow: 0 0 0 1px #8ccd9c; }
 .item[draggable="true"] { cursor: grab; }
 .item:active { cursor: grabbing; }
 .item.inactive { opacity: 0.58; }

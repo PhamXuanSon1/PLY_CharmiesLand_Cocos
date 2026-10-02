@@ -10,11 +10,14 @@ exports.$ = {
     parentName: '#parentName', columns: '#columns', spacingX: '#spacingX', spacingY: '#spacingY',
     startX: '#startX', startY: '#startY', centerGrid: '#centerGrid', skipInactive: '#skipInactive',
     load: '#load', apply: '#apply', list: '#list', status: '#status', spawnMode: '#spawnMode',
+    searchInput: '#searchInput', searchButton: '#searchButton',
 };
 
 let parentUuid = '';
 let itemList = [];
 let itemData = [];
+let lastSearchTerm = '';
+let searchIndex = 0;
 
 function req(method, ...args) {
     return Editor.Message.request(PKG, method, ...args).catch((e) => ({ ok: false, error: e.message }));
@@ -27,6 +30,40 @@ function escapeHtml(value) {
 function updateGridColumns(panel) {
     const columns = Math.max(1, Math.floor(Number(panel.$.columns.value) || 1));
     panel.$.list.style.setProperty('--grid-columns', columns);
+}
+
+function searchItems(panel) {
+    const term = String(panel.$.searchInput.value || '').trim().toLocaleLowerCase();
+    const cards = Array.from(panel.$.list.querySelectorAll('.item'));
+    cards.forEach((card) => card.classList.remove('search-match', 'search-current'));
+    if (!term) {
+        panel.$.status.textContent = 'Nhập tên item cần tìm.';
+        return;
+    }
+
+    const matches = cards.filter((card) => {
+        const name = card.querySelector('.details strong');
+        return name && name.textContent.toLocaleLowerCase().includes(term);
+    });
+    if (!matches.length) {
+        lastSearchTerm = term;
+        searchIndex = 0;
+        panel.$.status.textContent = 'Không tìm thấy item phù hợp.';
+        return;
+    }
+
+    if (term === lastSearchTerm) searchIndex = (searchIndex + 1) % matches.length;
+    else {
+        lastSearchTerm = term;
+        searchIndex = 0;
+    }
+    matches.forEach((card) => card.classList.add('search-match'));
+    const current = matches[searchIndex];
+    current.classList.add('search-current');
+    current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
+    panel.$.status.textContent = matches.length > 1
+        ? 'Tìm thấy ' + matches.length + ' item. Đang xem kết quả ' + (searchIndex + 1) + '.'
+        : 'Đã tìm thấy item.';
 }
 
 async function renderList(panel) {
@@ -128,6 +165,16 @@ exports.methods = {
 exports.ready = function () {
     this.$.load.addEventListener('confirm', this.loadItems.bind(this));
     this.$.apply.addEventListener('confirm', this.apply.bind(this));
+    this.$.searchButton.addEventListener('confirm', () => searchItems(this));
+    this.$.searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') searchItems(this);
+    });
+    this.$.searchInput.addEventListener('input', () => {
+        lastSearchTerm = '';
+        searchIndex = 0;
+        this.$.status.textContent = '';
+        this.$.list.querySelectorAll('.item').forEach((card) => card.classList.remove('search-match', 'search-current'));
+    });
     this.$.columns.addEventListener('input', () => updateGridColumns(this));
 };
 exports.close = function () {};
